@@ -1,9 +1,5 @@
 # Vim
-### Vim plugins:
-  airline
-  NerdTree
-  tagbar
 
-### Vim colorschemes:
-  gruvbox
-  fu
+## Vim plugins:
+awesome-vim-colorschemes  calendar-vim  gruvbox  nerdtree  undotree  vim-airline  vim-colors-meh  vim-phoenix  ZoomWin
+
