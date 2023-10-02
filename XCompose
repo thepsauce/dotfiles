@@ -1,0 +1,8 @@
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+<Multi_key> <slash> <greater> : U2197
+<Multi_key> <backslash> <greater> : U2196
+<Multi_key> <s> <h> <r> : "¯\\_(ツ)_/¯"
+
+<Multi_key> <v> <3> <slash>                 : "∛"   U221b # v 3 / CUBE ROOT
+<Multi_key> <v> <4> <slash>                 : "∜h   U221c # v 4 / FOURTH ROOT
