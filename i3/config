@@ -7,9 +7,11 @@ set $mod Mod4
 #font pango: Noto Sans Regula 10
 font pango: BmPlus IBM VGA 8x16 12
 
-bindsym --release $mod+Shift+slash exec i3lock
+bindsym --release $mod+Shift+slash exec i3lock & systemctl suspend
 
 bindsym --release $mod+m exec ~/.config/i3/menu.sh
+
+bindsym --release $mod+b exec /usr/local/bin/mood
 
 # TODO: make this refresh the actual status bar
 set $refresh_i3status true
@@ -34,7 +36,7 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec urxvt
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec discord
 bindsym $mod+F4 exec ~/.config/i3status/calendar.sh
@@ -52,7 +54,7 @@ for_window [class=qutebrowser] focus
 for_window [class=discord] focus
 for_window [class=(?i)krita] focus
 for_window [class=vlc] focus
-for_window [class=Alacritty instance=bar_click_popup] floating enable
+for_window [class=urxvt instance=popup] floating enable
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -197,11 +199,8 @@ bar {
 
 # On startup
 #exec --no-startup-id picom -CGb
-exec --no-startup-id xrandr --output DisplayPort-0 --output HDMI-A-0 --right-of DVI-D-1
-exec --no-startup-id xset r rate 200 50
 exec --no-startup-id ~/mylibs/bin/tracker.sh
 # set wallpaper
 exec --no-startup-id feh --bg-fill ~/Pictures/background.jpg
 # input manager
 exec --no-startup-id fcitx5
-exec --no-startup-id xmodmap -e "keycode 66 = Escape"

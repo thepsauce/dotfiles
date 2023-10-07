@@ -8,9 +8,7 @@
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-export PATH="$PATH:$HOME/mylibs/bin"
-alias c="~/mylibs/bin/c_build.sh"
-alias cx="~/mylibs/bin/c_build.sh -x --"
+bind '"\t": menu-complete'
 
 alias rm="rm -I"
 
@@ -20,8 +18,7 @@ alias grep="grep --color=auto"
 alias pw="pwmgr"
 
 mkcd() {
-	mkdir "$1"
-	cd "$1"
+	mkdir "$1" && cd "$1"
 }
 
 export VISUAL=vim
@@ -30,3 +27,6 @@ export EDITOR="$VISUAL"
 
 git_ps1=$(git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /)
 PS1="\n\[\e[1;37m\]<<< \[\e[1;34m\]\u\[\e[0;39m\]@\[\e[1;93m\]\h\[\e[0;94m\]:\[\e[1;93m\]\w\[\e[0;39m\]\[\e[1;35m\] $git_ps1\[\e[0;39m\]\[\e[1;37m\]>>>\[\e[0;39m\]\n\$ "
+
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
