@@ -1,0 +1,64 @@
+! General terminal setting (shared between xterm and urxvt)
+*font: xft:BmPlus IBM VGA 8x16:antialias=false:size=24
+*lineSpace: 1
+
+*termName: xterm-256color
+*scrollBar: false
+
+! Colors
+*background: #101421
+*foreground: #fffbf6
+
+! Normal Colors
+*color0:  #2e2e2e
+*color1:  #eb4129
+*color2:  #abe047
+*color3:  #f6c744
+*color4:  #47a0f3
+*color5:  #7b5cb0
+*color6:  #64dbed
+*color7:  #e5e9f0
+
+! Bright Colors
+*color8:  #565656
+*color9:  #ec5357
+*color10: #c0e17d
+*color11: #f9da6a
+*color12: #49a4f8
+*color13: #a47de9
+*color14: #99faf2
+*color15: #ffffff
+
+! urxvt
+
+URxvt.perl-ext-common: selection-to-clipboard,fullscreen,resize-font
+
+URxvt.skipScroll: true
+
+URxvt.clipboard.autocopy: true
+URxvt.keysym.Control-Shift-c: perl:clipboard:copy
+URxvt.keysym.Control-Shift-v: perl:clipboard:paste
+
+URxvt.keysym.F11: perl:fullscreen:switch
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+! xterm
+
+! Scrolling by using Shift-PageUp / Shift-PageDown or mousewheel by default ##
+! Lines of output you can scroll back over
+XTerm*saveLines: 15000
+
+! ## Select text ##
+XTerm*highlightSelection: true
+! Remove trailing spaces
+XTerm*trimSelection: true
+
+! ## Keybindings ##
+XTerm*vt100.translations: #override \n\
+  Ctrl <Key>-: smaller-vt-font() \n\
+  Ctrl <Key>+: larger-vt-font() \n\
+  Ctrl <Key>0: set-vt-font(d) \n\
+  Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
