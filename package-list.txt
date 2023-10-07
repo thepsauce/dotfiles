@@ -1,7 +1,10 @@
 alsa-utils
 android-file-transfer
+anki
 anthy
 arandr
+aspnet-runtime-6.0-bin
+aspnet-targeting-pack-6.0-bin
 base
 base-devel
 bash-completion
@@ -10,6 +13,9 @@ calcurse
 ddgr
 dialog
 dmenu
+dotnet-runtime-6.0-bin
+dotnet-sdk-6.0-bin
+dotnet-targeting-pack-6.0-bin
 enchant
 fcitx5
 fcitx5-anthy
@@ -18,11 +24,14 @@ fcitx5-gtk
 fcitx5-mozc
 fcitx5-qt
 feh
+ffcast
 firefox
+fluidplug-git
 fontforge
 fwupd
 fzf
 gdb
+getmail
 git
 grub
 gvim
@@ -34,6 +43,7 @@ i3status
 inetutils
 intltool
 jre-openjdk
+kalker
 krita
 linux
 linux-firmware
@@ -43,6 +53,7 @@ lv2
 lxsession
 m17n-lib
 man-pages
+mecab
 mold
 musescore
 mutt
@@ -58,11 +69,13 @@ noto-fonts-emoji
 npm
 openconnect
 openssl-1.1
+osu-lazer
 p7zip
 picom
 pulseaudio
 python-adblock
 python-beautifulsoup4
+python-bs4
 python-build
 python-certifi
 python-decorator
@@ -76,6 +89,7 @@ python-protobuf
 python-pysocks
 python-send2trash
 python-waitress
+python2
 qjackctl
 qsynth
 qt5ct
@@ -92,9 +106,12 @@ skk-jisyo
 steam
 texlive-fontutils
 thunderbird
-tilda
 tk
+tor-browser
+ttf-kanjistrokeorders
 unzip
+urxvt-fullscreen
+urxvt-resize-font-git
 vlc
 weechat
 weechat-matrix
@@ -153,6 +170,7 @@ xorg-xwayland
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
+xrectsel
 xsel
 xss-lock
 xterm

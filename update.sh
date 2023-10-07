@@ -20,5 +20,4 @@ done
 
 cp /usr/local/bin/*.sh bin/
 
-echo "pacman loading. . ."
-pacman -Qqen > package-list.txt
+pacman -Qqe > package-list.txt
