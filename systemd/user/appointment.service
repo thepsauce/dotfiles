@@ -1,0 +1,10 @@
+[Unit]
+Description=Reminds you of appointments
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash /usr/local/bin/remind.sh
+
+[Install]
+WantedBy=default.target

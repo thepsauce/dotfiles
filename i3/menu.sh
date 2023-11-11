@@ -1,6 +1,6 @@
 #!/bin/bash
 
-result=$(echo -e "Anki\nCalendar\nDiscord\nFirefox\nFontforge\nMusescore\nKrita\nQutebrowser\nVlc\nTerminal\nThunderbird" | dmenu -i -l 20 -p Launch -nb "#000016" -nf "#857810" -sf "#ecd200" -sb "#363a59")
+result=$(echo -e "Anki\nCalendar\nDiscord\nFirefox\nFontforge\nMusescore\nKICad\nKrita\nPeriodic table\nQutebrowser\nRemind\nTerminal\nThunderbird\nVlc" | dmenu -i -l 20 -p Launch -nb "#000016" -nf "#857810" -sf "#ecd200" -sb "#363a59")
 
 case "$result" in
 	Anki)
@@ -21,19 +21,28 @@ case "$result" in
 	Musescore)
 		/usr/bin/mscore &
 		;;
+	KICad)
+		/usr/bin/kicad &
+		;;
 	Krita)
 		/usr/bin/krita &
+		;;
+	"Periodic table")
+		/usr/bin/kalzium &
 		;;
 	Qutebrowser)
 		/usr/bin/qutebrowser &
 		;;
-	Vlc)
-		/usr/bin/vlc &
+	Remind)
+		urxvt -name popup -e vim ~/.reminders/appointments.rem
 		;;
 	Thunderbird)
 		/usr/bin/thunderbird &
 		;;
 	Terminal)
 		/usr/bin/alacritty &
+		;;
+	Vlc)
+		/usr/bin/vlc &
 		;;
 esac

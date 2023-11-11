@@ -1,6 +1,6 @@
 #!/bin/bash
 
-config_dirs="i3 i3status fcitx5"
+config_dirs="systemd/user i3 i3status fcitx5"
 
 mkdir -p $config_dirs
 

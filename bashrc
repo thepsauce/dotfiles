@@ -21,6 +21,20 @@ mkcd() {
 	mkdir "$1" && cd "$1"
 }
 
+g() {
+	pattern="$1"
+	files="$2"
+	if [ -z "$files" ]
+	then
+		files="."
+	fi
+	grep -n -d recurse -D skip --binary-files=without-match --color=always -C 1 "$pattern" "$files" | less -R
+}
+
+export HISTCONTROL=erasedups
+export HISTSIZE=5000
+#history -r $HOME/.bash_favorite_history
+
 export VISUAL=vim
 export GIT_EDITOR="$VISUAL"
 export EDITOR="$VISUAL"

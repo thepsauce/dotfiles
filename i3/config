@@ -37,7 +37,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 bindsym $mod+Return exec urxvt
-bindsym $mod+F2 exec firefox
+bindsym $mod+F2 exec qutebrowser
 bindsym $mod+F3 exec discord
 bindsym $mod+F4 exec ~/.config/i3status/calendar.sh
 
@@ -54,7 +54,7 @@ for_window [class=qutebrowser] focus
 for_window [class=discord] focus
 for_window [class=(?i)krita] focus
 for_window [class=vlc] focus
-for_window [class=urxvt instance=popup] floating enable
+for_window [class=URxvt instance=popup] floating enable
 
 # kill focused window
 bindsym $mod+Shift+q kill
