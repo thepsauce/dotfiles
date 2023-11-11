@@ -1,7 +1,14 @@
-echo '{"version":1,"click_events":true}[[]'
+runner_bar=
+secondly_bar=
+prev_time=
 
-while :
-do
+get_secondly_bar() {
+	time=$(date '+ %a %d-%m-%y  %T')
+	if [ "$time" = "$prev_time" ]
+	then
+		return 0
+	fi
+	prev_time=$time
 	# CPU
 	# Get the first line with aggregate of all CPUs
 	cpu_now=($(head -n1 /proc/stat))
@@ -129,7 +136,7 @@ do
 
 	# Construct all parts of the bar
 	bar_neko="{\"align\":\"center\",\"short_text\":\"\",\"min_width\":\"     \",\"full_text\":\"$neko_ears    $neko_ears \"}"
-	bar_date="{\"name\":\"id_time\",\"full_text\":\"$(date '+ %a %d-%m-%y  %T')\"}"
+	bar_date="{\"name\":\"id_time\",\"full_text\":\"$prev_time\"}"
 	bar_cpu="{\"name\":\"id_cpu\",\"min_width\":\" 100%\",\"full_text\":\" $cpu_usage%\"}"
 	bar_ram="{\"name\":\"id_ram\",\"full_text\":\" `free -m | grep Mem: | awk '{print $3"/"$2" ("int(100*$3/$2)"%)"}'`\"}"
 	bar_disk="{\"name\":\"id_disk\",\"full_text\":\" `df -m | grep /dev/sda1 | awk '{print ""$3"/"$2" ("$5")"}'`\"}"
@@ -142,10 +149,79 @@ do
 	bar_battery="{\"name\":\"id_bat\",\"min_width\":\" 100%\",\"full_text\":\"$battery_icon $battery_life%\"}"
 	bar_volume="{\"name\":\"id_volume\",\"short_text\":\" $volume_percentage\",\"full_text\":\"$volume_indicator\"}"
 
-	# Assemble the bar and send it off
-	echo ",[$bar_neko,$bar_volume,$bar_battery,$bar_wifi,$bar_disk,$bar_ram,$bar_cpu,$bar_date]"
-	sleep 1 &
-	wait $!
+	# Assemble the bar
+	secondly_bar="$bar_neko,$bar_volume,$bar_battery,$bar_wifi,$bar_disk,$bar_ram,$bar_cpu,$bar_date"
+}
+
+time_last_message=0
+flow_index=0
+flow_length=32
+flow_size=
+flow_delta=0
+flow_done=true
+anticipation=11
+exhaust_time=0
+delta_time=$((anticipation + anticipation))
+
+mkfifo ~/.config/i3status/flow
+exec 7<>~/.config/i3status/flow
+
+echo '{"version":1,"click_events":true}[[]'
+
+while :
+do
+	if [ $delta_time -gt $((anticipation + flow_delta + anticipation)) ] && read -u 7 -t 0.001 flow_text
+	then
+		cur_time=$(date +"%s")
+		if [ $((time_last_message + 100)) -lt $cur_time ]
+		then
+			exhaust_time=14
+		fi
+		time_last_message=$cur_time
+
+		flow_size=${#flow_text}
+		if [ $flow_size -gt $flow_length ]
+		then
+			flow_delta=$((flow_size - flow_length))
+		else
+			flow_delta=0
+		fi
+		delta_time=0
+	fi
+
+	if [ $delta_time -le $anticipation ]
+	then
+		flow_index=0
+	elif [ $delta_time -le $((anticipation + flow_delta)) ]
+	then
+		flow_index=$((delta_time - anticipation))
+	else
+		flow_index=$flow_delta
+	fi
+
+	echo -n ",["
+
+	echo -n "{\"full_text\":\""
+	if [ $exhaust_time -gt 0 ]
+	then
+		echo -n "⚠ ATTENTION! New message incoming! ⚠"
+	else
+		echo -n "${flow_text:$flow_index:$flow_length}"
+	fi
+	echo -n "\"},"
+
+	get_secondly_bar
+	echo -n $secondly_bar
+
+	echo "]"
+
+	if [ $exhaust_time -gt 0 ]
+	then
+		$((exhaust_time--))
+	else
+		$((delta_time++))
+	fi
+	sleep 0.2
 done
 
 #pid="$!"

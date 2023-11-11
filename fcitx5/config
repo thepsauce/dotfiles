@@ -19,10 +19,10 @@ EnumerateSkipFirst=False
 0=Control+Alt+Shift+Super+F9
 
 [Hotkey/EnumerateGroupForwardKeys]
-0=Super+space
+0=Control+Alt+Shift+Super+F9
 
 [Hotkey/EnumerateGroupBackwardKeys]
-0=Shift+Super+space
+0=Control+Alt+Shift+Super+F9
 
 [Hotkey/ActivateKeys]
 0=Hangul_Hanja
