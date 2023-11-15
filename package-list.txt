@@ -4,6 +4,7 @@ anki
 anthy
 arandr
 artikulate
+aseprite
 aspnet-runtime-6.0-bin
 aspnet-targeting-pack-6.0-bin
 base
@@ -13,6 +14,9 @@ blinken
 borgmatic
 calcurse
 cantor
+clang
+cmake
+cmark
 ctags
 ddgr
 dialog
@@ -38,6 +42,7 @@ gdb
 getmail
 git
 glogic
+gn
 gnuplot
 grub
 gtkwave
@@ -82,6 +87,7 @@ marble
 mecab
 minuet
 mold
+mtpaint
 musescore
 mutt
 nasm
@@ -141,6 +147,7 @@ s-nail
 sdl2_gfx
 sdl2_image
 sdl2_ttf
+setconf
 skk-jisyo
 smartsim-git
 steam
@@ -238,4 +245,5 @@ xsel
 xss-lock
 xterm
 yarn
+youtube-music-bin
 zip

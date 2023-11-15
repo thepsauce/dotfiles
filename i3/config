@@ -13,21 +13,19 @@ bindsym --release $mod+m exec ~/.config/i3/menu.sh
 
 bindsym --release $mod+b exec /usr/local/bin/mood
 
-# TODO: make this refresh the actual status bar
-set $refresh_i3status true
-
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # ffcast bindings
 bindsym --release F12 exec ffcast png $HOME/Screenshots/screenshot-`date +%Y-%m-%d_%H:%M:%S`.png
 bindsym --release $mod+F12 exec ffcast -s png $HOME/Screenshots/screenshot-`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym --release Shift+F12 exec ffcast -s rec $HOME/Screenshots/video-`date +%Y-%m-%d_%H:%M:%S`.mp4
-bindsym --release $mod+Shift+F12 exec ffcast -w rec $HOME/Screenshots/video-`date +%Y-%m-%d_%H:%M:%S`.mp4
-bindsym --release $mod+F11 exec pkill ffmpeg
+bindsym --release $mod+Shift+F12 exec ffcast -w png $HOME/Screenshots/screenshot-`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym --release F11 exec ffcast -s rec $HOME/Screenshots/video-`date +%Y-%m-%d_%H:%M:%S`.mp4
+bindsym --release $mod+F11 exec ffcast -w rec $HOME/Screenshots/video-`date +%Y-%m-%d_%H:%M:%S`.mp4
+bindsym --release $mod+Shift+F11 exec pkill ffmpeg
 
 # use mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
