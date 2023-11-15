@@ -6,6 +6,7 @@ mkdir -p $config_dirs
 
 for d in $config_dirs
 do
+	rm -rf $d/*
 	cp -r $HOME/.config/$d/* $d/
 done
 
@@ -17,6 +18,8 @@ for d in $dots
 do
 	cp -r $HOME/.$d $d
 done
+
+cp /usr/share/fonts/BmPlus_IBM_VGA_8x16.otb font.otb
 
 cp /usr/local/bin/*.sh bin/
 

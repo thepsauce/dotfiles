@@ -1,0 +1,10 @@
+[Unit]
+Description=Prevents the system from going to sleep if Qutebrowser is playing audio
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash /usr/local/bin/prevent_sleep.sh
+
+[Install]
+WantedBy=default.target

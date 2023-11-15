@@ -2,7 +2,7 @@
 Description=Prevents the system from going to sleep
 
 [Timer]
-OnUnitActiveSec=10min
+OnUnitActiveSec=5min
 
 [Install]
 WantedBy=timers.target
