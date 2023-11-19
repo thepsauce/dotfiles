@@ -13,7 +13,7 @@ done
 mkdir -p bin
 cp /usr/local/bin/*.sh bin/
 
-dots="vimrc bashrc XCompose xsession xprofile Xmodmap Xresources"
+dots="gdbinit vimrc bashrc XCompose xsession xprofile Xmodmap Xresources"
 for d in $dots
 do
 	cp -r $HOME/.$d $d
