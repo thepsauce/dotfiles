@@ -116,6 +116,7 @@ python-beautifulsoup4
 python-bs4
 python-build
 python-certifi
+python-clevercsv
 python-decorator
 python-distro
 python-flask-cors
@@ -126,6 +127,7 @@ python-pip
 python-protobuf
 python-pysocks
 python-send2trash
+python-tabview
 python-tldextract
 python-waitress
 python2
