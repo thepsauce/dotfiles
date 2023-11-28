@@ -119,6 +119,13 @@ get_secondly_bar() {
 		volume_indicator="$volume_indicator$char"
 	done
 
+	# Weather
+	raw_weather=$(curl "wttr.in/?format=%c:%t:%f")
+	weather_state=
+	weather_temp=
+	weather_feel=
+	IFS=':' read -r weather_state weather_temp weather_feel <<< "$raw_weather"
+
 	# Construct neko based on uptime :3
 	cur_uptime=$(cat /proc/uptime)
 	cur_uptime=${cur_uptime%.*}
@@ -136,6 +143,7 @@ get_secondly_bar() {
 
 	# Construct all parts of the bar
 	bar_neko="{\"align\":\"center\",\"short_text\":\"\",\"min_width\":\"     \",\"full_text\":\"$neko_ears    $neko_ears \"}"
+	bar_weather="{\"name\":\"id_weather\",\"full_text\":\"$weather_state $weather_temp ($weather_feel)\"}"
 	bar_date="{\"name\":\"id_time\",\"full_text\":\"$prev_time\"}"
 	bar_cpu="{\"name\":\"id_cpu\",\"min_width\":\" 100%\",\"full_text\":\" $cpu_usage%\"}"
 	bar_ram="{\"name\":\"id_ram\",\"full_text\":\" `free -m | grep Mem: | awk '{print $3"/"$2" ("int(100*$3/$2)"%)"}'`\"}"
@@ -144,13 +152,13 @@ get_secondly_bar() {
 	then
 		bar_wifi="{\"name\":\"id_wifi\",\"short_text\":\"down\",\"full_text\":\"Internet down\"}"
 	else
-		bar_wifi="{\"name\":\"id_wifi\",\"short_text\":\"$wifi_ssid\",\"full_text\":\" $wifi_ssid $wifi_address\"}"
+		bar_wifi="{\"name\":\"id_wifi\",\"short_text\":\" $wifi_address\",\"full_text\":\" $wifi_ssid $wifi_address\"}"
 	fi
 	bar_battery="{\"name\":\"id_bat\",\"min_width\":\" 100%\",\"full_text\":\"$battery_icon $battery_life%\"}"
 	bar_volume="{\"name\":\"id_volume\",\"short_text\":\" $volume_percentage\",\"full_text\":\"$volume_indicator\"}"
 
 	# Assemble the bar
-	secondly_bar="$bar_neko,$bar_volume,$bar_battery,$bar_wifi,$bar_disk,$bar_ram,$bar_cpu,$bar_date"
+	secondly_bar="$bar_neko,$bar_weather,$bar_volume,$bar_battery,$bar_wifi,$bar_disk,$bar_ram,$bar_cpu,$bar_date"
 }
 
 time_last_message=0

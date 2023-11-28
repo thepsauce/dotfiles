@@ -10,6 +10,7 @@ set tabstop=8
 set shiftwidth=8
 set wrap
 set cole=1
+set textwidth=0
 
 " This makes the ~ disappear at empty bottom lines
 "let &fillchars ..= ',eob: '
