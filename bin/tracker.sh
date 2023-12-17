@@ -6,7 +6,7 @@ then
 	mkdir ~/.tracks || echo "could not create .tracks file in home directory :/" && exit 1
 fi
 
-# Get he current active window and starting time
+# Get the current active window and starting time
 title=$(xdotool getwindowfocus getwindowname)
 start_time=$(date +%s.%N)
 
@@ -23,7 +23,7 @@ done
 file_name="${file_name}_$file_counter"
 
 # Main loop with 1second delay
-while true 
+while true
 do
 	# This checks if the active window changed by comparing the titles
 	new_title=$(xdotool getwindowfocus getwindowname)

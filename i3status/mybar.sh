@@ -1,6 +1,7 @@
 runner_bar=
 secondly_bar=
 prev_time=
+old_weather=
 
 get_secondly_bar() {
 	time=$(date '+ %a %d-%m-%y  %T')
@@ -120,11 +121,17 @@ get_secondly_bar() {
 	done
 
 	# Weather
-	raw_weather=$(curl "wttr.in/?format=%c:%t:%f")
+	raw_weather=$(curl --connect-timeout 1 -s "wttr.in/?format=%c%20%t%20%f")
 	weather_state=
 	weather_temp=
 	weather_feel=
-	IFS=':' read -r weather_state weather_temp weather_feel <<< "$raw_weather"
+	if [ -z "$raw_weather" ]
+	then
+		raw_weather="$old_weather"
+	else
+		old_weather="$raw_weather"
+	fi
+	read -r weather_state weather_temp weather_feel <<< "$raw_weather"
 
 	# Construct neko based on uptime :3
 	cur_uptime=$(cat /proc/uptime)
