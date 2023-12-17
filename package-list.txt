@@ -20,6 +20,7 @@ cmark
 ctags
 ddgr
 dialog
+discord
 dmenu
 dotnet-runtime-6.0-bin
 dotnet-sdk-6.0-bin
@@ -44,6 +45,7 @@ git
 glogic
 gn
 gnuplot
+go
 grub
 gtkwave
 gvim
@@ -76,6 +78,7 @@ ktouch
 kturtle
 kvantum
 kwordquiz
+libgmp-static
 linux
 linux-firmware
 linux-headers
@@ -133,6 +136,7 @@ python-tldextract
 python-waitress
 python2
 qalculate-qt
+qemu-full
 qjackctl
 qsynth
 qt5ct
@@ -147,6 +151,7 @@ ruby
 rust
 rxvt-unicode
 s-nail
+scons
 sdl2_gfx
 sdl2_image
 sdl2_ttf
@@ -155,6 +160,7 @@ skk-jisyo
 smartsim-git
 steam
 step
+strace
 texlive-bibtexextra
 texlive-binextra
 texlive-context
@@ -248,5 +254,6 @@ xsel
 xss-lock
 xterm
 yarn
+yay
 youtube-music-bin
 zip
