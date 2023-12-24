@@ -1,11 +1,14 @@
 include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 
-<Multi_key> <slash> <greater> : U2197
-<Multi_key> <backslash> <greater> : U2196
-<Multi_key> <s> <h> <r> : "¯\\_(ツ)_/¯"
+<Multi_key> <backslash> <less>		: U2196 # UP LEFT ARROW
+<Multi_key> <slash> <greater>		: U2197 # DOWN LEFT ARROW
+<Multi_key> <backslash> <greater>	: U2198 # DOWN RIGHT ARROW
+<Multi_key> <slash> <less>		: U2199 # UP RIGHT ARROW
 
-<Multi_key> <v> <3> <slash>                 : "∛"   U221b # v 3 / CUBE ROOT
-<Multi_key> <v> <4> <slash>                 : "∜"   U221c # v 4 / FOURTH ROOT
+<Multi_key> <s> <h> <r>			: "¯\\_(ツ)_/¯" # SHRUG
+
+<Multi_key> <v> <3> <slash>		: "∛"   U221b # v 3 / CUBE ROOT
+<Multi_key> <v> <4> <slash>		: "∜"   U221c # v 4 / FOURTH ROOT
 
 <Multi_key> <bar> <bar>			: "‖"	U2016 # DOUBLE VERTICAL LINE
 
