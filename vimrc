@@ -74,6 +74,16 @@ endfunction
 
 map <c-f> :call DmenuOpen("e")<cr>
 
+command! -nargs=* Build :call BuildProject(<q-args>)
+
+function! BuildProject(args)
+	let cmd="./build.sh"
+	execute "!" . l:cmd . " " . a:args
+	let error_file = "/tmp/error_file.txt"
+	if filereadable(l:error_file)
+		execute "cfile " . l:error_file
+	endif
+endfunction
+
 autocmd VimEnter * if argc() == 0 && !exists("s:stdin") && filereadable("session.vim") | source session.vim | endif
 
-inoremap <C-A> <ESC>gUiwea

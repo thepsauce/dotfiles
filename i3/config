@@ -42,7 +42,7 @@ bindsym $mod+F4 exec ~/.config/i3status/calendar.sh
 assign [class=(?i)firefox] $ws2
 assign [class=qutebrowser] $ws2
 assign [class=discord] $ws3
-assign [class="Youtube Music"] $ws3
+assign [class="(?i)youtube music"] $ws3
 assign [class=(?i)krita] $ws7
 assign [class=vlc] $ws8
 assign [class=thunderbird] $ws9
