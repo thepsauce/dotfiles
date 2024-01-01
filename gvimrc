@@ -1,6 +1,6 @@
 set guifont=BmPlus\ IBM\ VGA\ 8x16
 
-set guioptions=ad!
+set guioptions =c!
 
 " Stop annoying espace sequence from appearing
 tnoremap <S-Space> <Space>

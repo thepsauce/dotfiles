@@ -10,7 +10,10 @@ set tabstop=8
 set shiftwidth=8
 set wrap
 set cole=1
-set textwidth=0
+set textwidth=80
+set autoindent
+set copyindent
+set preserveindent
 
 " This makes the ~ disappear at empty bottom lines
 "let &fillchars ..= ',eob: '
@@ -32,6 +35,8 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 " Color theme
 "colo fu

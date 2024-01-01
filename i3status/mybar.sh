@@ -1,7 +1,25 @@
 runner_bar=
 secondly_bar=
 prev_time=
-old_weather=
+
+while :
+do
+	old_weather=
+	# Weather
+	raw_weather=$(curl -s "wttr.in/?format=%c%20%t%20%f")
+	weather_state=
+	weather_temp=
+	weather_feel=
+	if [ -z "$raw_weather" ]
+	then
+		raw_weather="$old_weather"
+	else
+		old_weather="$raw_weather"
+		echo "$raw_weather" > ~/.config/i3status/weather
+	fi
+
+	sleep 10
+done &
 
 get_secondly_bar() {
 	time=$(date '+ %a %d-%m-%y  %T')
@@ -121,16 +139,7 @@ get_secondly_bar() {
 	done
 
 	# Weather
-	raw_weather=$(curl --connect-timeout 1 -s "wttr.in/?format=%c%20%t%20%f")
-	weather_state=
-	weather_temp=
-	weather_feel=
-	if [ -z "$raw_weather" ]
-	then
-		raw_weather="$old_weather"
-	else
-		old_weather="$raw_weather"
-	fi
+	raw_weather="$(cat ~/.config/i3status/weather)"
 	read -r weather_state weather_temp weather_feel <<< "$raw_weather"
 
 	# Construct neko based on uptime :3
