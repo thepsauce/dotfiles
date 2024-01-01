@@ -33,7 +33,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 bindsym $mod+Return exec urxvt
-bindsym $mod+Shift+Return exec gvim -c "term"
+bindsym $mod+Shift+Return exec gvim
 bindsym $mod+F2 exec qutebrowser
 bindsym $mod+F3 exec discord
 bindsym $mod+F4 exec ~/.config/i3status/calendar.sh

@@ -10,6 +10,7 @@ aspnet-targeting-pack-6.0-bin
 base
 base-devel
 bash-completion
+bind
 blinken
 borgmatic
 calcurse
@@ -44,6 +45,7 @@ getmail
 git
 glogic
 gn
+gnu-netcat
 gnuplot
 go
 grub
@@ -99,6 +101,7 @@ neofetch
 net-tools
 networkmanager
 nfs-utils
+ngrok
 ninja
 noto-fonts
 noto-fonts-cjk
@@ -160,6 +163,7 @@ skk-jisyo
 smartsim-git
 steam
 step
+stockfish
 strace
 texlive-bibtexextra
 texlive-binextra
