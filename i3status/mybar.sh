@@ -2,11 +2,12 @@ runner_bar=
 secondly_bar=
 prev_time=
 
+# Get the weather every hour
 while :
 do
 	old_weather=
 	# Weather
-	raw_weather=$(curl -s "wttr.in/?format=%c%20%t%20%f")
+	raw_weather=$(curl -s "wttr.in/Hamburg?format=%c%20%t%20%f")
 	weather_state=
 	weather_temp=
 	weather_feel=
@@ -18,7 +19,7 @@ do
 		echo "$raw_weather" > ~/.config/i3status/weather
 	fi
 
-	sleep 10
+	sleep 3600
 done &
 
 get_secondly_bar() {

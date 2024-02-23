@@ -7,6 +7,7 @@ artikulate
 aseprite
 aspnet-runtime-6.0-bin
 aspnet-targeting-pack-6.0-bin
+audacity
 base
 base-devel
 bash-completion
@@ -19,6 +20,7 @@ clang
 cmake
 cmark
 ctags
+cutechess
 ddgr
 dialog
 discord
@@ -27,6 +29,7 @@ dotnet-runtime-6.0-bin
 dotnet-sdk-6.0-bin
 dotnet-targeting-pack-6.0-bin
 enchant
+fairy-stockfish
 fcitx5
 fcitx5-anthy
 fcitx5-configtool
@@ -46,6 +49,7 @@ git
 glogic
 gn
 gnu-netcat
+gnuchess
 gnuplot
 go
 grub
@@ -80,6 +84,7 @@ ktouch
 kturtle
 kvantum
 kwordquiz
+lc0
 libgmp-static
 linux
 linux-firmware
@@ -87,6 +92,7 @@ linux-headers
 lua
 lv2
 lxsession
+lyrebird
 m17n-lib
 man-pages
 marble
@@ -113,9 +119,11 @@ osu-lazer
 p7zip
 parley
 pass
+pavucontrol
+pdfgrep
 pdfjs
 picom
-pulseaudio
+polyglot
 pulsemixer
 pulseview
 python-adblock
@@ -202,6 +210,7 @@ whois
 wine
 wireless_tools
 wmctrl
+xboard
 xclip
 xdotool
 xf86-video-vesa

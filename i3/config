@@ -5,7 +5,9 @@ set $mod Mod4
 #font pango: Noto Sans Regula 10
 font pango: BmPlus IBM VGA 8x16 12
 
-bindsym --release $mod+Shift+slash exec i3lock & systemctl suspend
+# i3lock has a weird bug where typing the valid password won't unlock it
+#bindsym --release $mod+Shift+slash exec i3lock & systemctl suspend
+bindsym --release $mod+Shift+slash exec systemctl suspend
 
 bindsym --release $mod+m exec ~/.config/i3/menu.sh
 
@@ -14,6 +16,10 @@ bindsym --release $mod+b exec /usr/local/bin/mood
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym Ctrl+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +15%
+bindsym Ctrl+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -15%
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
