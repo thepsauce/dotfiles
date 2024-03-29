@@ -1,6 +1,5 @@
 [Unit]
 Description=Reminds you of appointments
-After=network.target
 
 [Service]
 Type=simple

@@ -1,6 +1,7 @@
 runner_bar=
 secondly_bar=
 prev_time=
+prev_volume_percentage=
 
 # Get the weather every hour
 while :
@@ -23,12 +24,23 @@ do
 done &
 
 get_secondly_bar() {
+	# react dynamically to time and volume
 	time=$(date '+ %a %d-%m-%y  %T')
-	if [ "$time" = "$prev_time" ]
+	volume_muted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+	if [ "$volume_muted" = "yes" ]
+	then
+		volume_percentage=0%
+	else
+		volume_percentage=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')
+	fi
+
+	if [ "$time" = "$prev_time" ] && [ "$volume_percentage" = "$prev_volume_percentage" ]
 	then
 		return 0
 	fi
-	prev_time=$time
+	prev_time="$time"
+	prev_volume_percentage="$volume_percentage"
+
 	# CPU
 	# Get the first line with aggregate of all CPUs
 	cpu_now=($(head -n1 /proc/stat))
@@ -47,6 +59,18 @@ get_secondly_bar() {
 	# Keep this as last for our next read
 	cpu_last=("${cpu_now[@]}")
 	cpu_last_sum=$cpu_sum
+
+	# Disk
+	disk_space=0
+	disk_used=0
+	disk_available=0
+	while IFS= read -r line
+	do
+		read -r fs blocks used available perc mount <<< "$line"
+		disk_space=$((disk_space+blocks))
+		disk_used=$((disk_used+used))
+		disk_available=$((disk_available+available))
+	done < <(df -m | grep /dev/sd)
 
 	# Wifi
 	wifi_device=
@@ -87,15 +111,7 @@ get_secondly_bar() {
 	bar_battery="$battery_icon $battery_life%"
 
 	# Volume
-	volume_muted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
-	if [ "$volume_muted" = "yes" ]
-	then
-		volume_percentage=0%
-		volume_level=0
-	else
-		volume_percentage=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')
-		volume_level=${volume_percentage%?}
-	fi
+	volume_level=${volume_percentage%?}
 	volume_steps=9
 	volume_cap=$((volume_level / 10))
 	if [ "$volume_level" = "0" ]
@@ -111,6 +127,7 @@ get_secondly_bar() {
 		volume_indicator=" "
 	fi
 
+	volume_bar=
 	for ((i = 0; i <= $volume_steps; i++))
 	do
 		char=
@@ -136,7 +153,7 @@ get_secondly_bar() {
 				char=""
 			fi
 		fi
-		volume_indicator="$volume_indicator$char"
+		volume_bar="$volume_bar$char"
 	done
 
 	# Weather
@@ -164,7 +181,7 @@ get_secondly_bar() {
 	bar_date="{\"name\":\"id_time\",\"full_text\":\"$prev_time\"}"
 	bar_cpu="{\"name\":\"id_cpu\",\"min_width\":\" 100%\",\"full_text\":\" $cpu_usage%\"}"
 	bar_ram="{\"name\":\"id_ram\",\"full_text\":\" `free -m | grep Mem: | awk '{print $3"/"$2" ("int(100*$3/$2)"%)"}'`\"}"
-	bar_disk="{\"name\":\"id_disk\",\"full_text\":\" `df -m | grep /dev/sda1 | awk '{print ""$3"/"$2" ("$5")"}'`\"}"
+	bar_disk="{\"name\":\"id_disk\",\"full_text\":\" $disk_used/$disk_space ($((100*disk_used/disk_available))%)\"}"
 	if [ "$wifi_device" = "lo" ]
 	then
 		bar_wifi="{\"name\":\"id_wifi\",\"short_text\":\"down\",\"full_text\":\"Internet down\"}"
@@ -172,10 +189,10 @@ get_secondly_bar() {
 		bar_wifi="{\"name\":\"id_wifi\",\"short_text\":\" $wifi_address\",\"full_text\":\" $wifi_ssid $wifi_address\"}"
 	fi
 	bar_battery="{\"name\":\"id_bat\",\"min_width\":\" 100%\",\"full_text\":\"$battery_icon $battery_life%\"}"
-	bar_volume="{\"name\":\"id_volume\",\"short_text\":\" $volume_percentage\",\"full_text\":\"$volume_indicator\"}"
+	bar_volume="{\"name\":\"id_volume\",\"short_text\":\" $volume_percentage\",\"full_text\":\"$volume_indicator$volume_percentage$volume_bar\"}"
 
 	# Assemble the bar
-	secondly_bar="$bar_neko,$bar_weather,$bar_volume,$bar_battery,$bar_wifi,$bar_disk,$bar_ram,$bar_cpu,$bar_date"
+	secondly_bar="$bar_neko,$bar_weather,$bar_volume,$bar_wifi,$bar_disk,$bar_ram,$bar_cpu,$bar_date"
 }
 
 time_last_message=0

@@ -1,11 +1,10 @@
 [Unit]
 Description=Takes a screenshot
-After=network.target
 
 [Service]
 Type=simple
 Environment=DISPLAY=":0"
-ExecStart=/bin/bash /usr/local/bin/screenshotter.sh
+ExecStart=/bin/bash /usr/local/bin/screencast.sh -a -i -r .data/screenshotter
 
 [Install]
 WantedBy=default.target

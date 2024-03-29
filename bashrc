@@ -21,6 +21,22 @@ mkcd() {
 	mkdir "$1" && cd "$1"
 }
 
+cdb() {
+	cd ~/ext || return 1
+	if [ -n "$1" ]
+	then
+		cd "$1"
+	fi
+}
+
+cdc() {
+	cd ~/ext2 || return 1
+	if [ -n "$1" ]
+	then
+		cd "$1"
+	fi
+}
+
 g() {
 	pattern="$1"
 	files="$2"
@@ -32,7 +48,7 @@ g() {
 }
 
 export HISTCONTROL=erasedups
-export HISTSIZE=5000
+export HISTSIZE=20000
 #history -r $HOME/.bash_favorite_history
 
 export VISUAL=vim

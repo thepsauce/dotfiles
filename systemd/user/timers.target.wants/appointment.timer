@@ -1,1 +1,9 @@
-/home/steves/.config/systemd/user/appointment.timer
+[Unit]
+Description=Reminds you of appointments
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=timers.target

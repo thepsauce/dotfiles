@@ -65,6 +65,8 @@ nnoremap , :call CommentHtml()<CR>
 " I like to use nasm
 au BufRead,BufNewFile *.asm set ft=nasm
 
+au BufRead,BufNewFile *.prop set ft=prop
+
 " dmenu integration in Vim
 
 " Find a file and pass it to cmd
@@ -82,9 +84,9 @@ map <c-f> :call DmenuOpen("e")<cr>
 command! -nargs=* Build :call BuildProject(<q-args>)
 
 function! BuildProject(args)
-	let cmd="./build.sh"
-	execute "!" . l:cmd . " " . a:args
+	let cmd = "./build.sh"
 	let error_file = "/tmp/error_file.txt"
+	execute "!" . l:cmd . " -fdiagnostics-plain-output -o " . l:error_file . " " . a:args
 	if filereadable(l:error_file)
 		execute "cfile " . l:error_file
 	endif
@@ -92,3 +94,6 @@ endfunction
 
 autocmd VimEnter * if argc() == 0 && !exists("s:stdin") && filereadable("session.vim") | source session.vim | endif
 
+" Fuzzy vim (kind of replaces dmenu)
+import './.vim/pack/other/start/scope.vim/autoload/fuzzy.vim' as fuzzy
+nnoremap Z <ScriptCmd>:call s:fuzzy.File()<CR>

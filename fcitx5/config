@@ -1,6 +1,10 @@
 [Hotkey]
 # Enumerate when press trigger key repeatedly
-EnumerateWithTriggerKeys=False
+EnumerateWithTriggerKeys=True
+# Enumerate Input Method Forward
+EnumerateForwardKeys=
+# Enumerate Input Method Backward
+EnumerateBackwardKeys=
 # Skip first input method while enumerating
 EnumerateSkipFirst=False
 
@@ -10,19 +14,13 @@ EnumerateSkipFirst=False
 2=Hangul
 
 [Hotkey/AltTriggerKeys]
-0=Control+Alt+Shift+Super+F9
-
-[Hotkey/EnumerateForwardKeys]
-0=Control+Alt+Shift+Super+F9
-
-[Hotkey/EnumerateBackwardKeys]
-0=Control+Alt+Shift+Super+F9
+0=Shift_L
 
 [Hotkey/EnumerateGroupForwardKeys]
-0=Control+Alt+Shift+Super+F9
+0=Super+space
 
 [Hotkey/EnumerateGroupBackwardKeys]
-0=Control+Alt+Shift+Super+F9
+0=Shift+Super+space
 
 [Hotkey/ActivateKeys]
 0=Hangul_Hanja
@@ -72,4 +70,10 @@ EnabledAddons=
 DisabledAddons=
 # Preload input method to be used by default
 PreloadInputMethod=True
+# Allow input method in the password field
+AllowInputMethodForPassword=False
+# Show preedit text when typing password
+ShowPreeditForPassword=False
+# Interval of saving user data in minutes
+AutoSavePeriod=30
 

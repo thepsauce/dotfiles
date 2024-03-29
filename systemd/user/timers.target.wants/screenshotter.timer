@@ -1,1 +1,9 @@
-/home/steves/.config/systemd/user/screenshotter.timer
+[Unit]
+Description=Takes a screenshot every half hour
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=30min
+
+[Install]
+WantedBy=timers.target

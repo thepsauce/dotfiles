@@ -23,12 +23,9 @@ bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @D
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-# ffcast bindings
-bindsym --release F12 exec ffcast png $HOME/Screenshots/screenshot-`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym --release $mod+F12 exec ffcast -s png $HOME/Screenshots/screenshot-`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym --release $mod+Shift+F12 exec ffcast -w png $HOME/Screenshots/screenshot-`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym --release F11 exec ffcast -s rec $HOME/Screenshots/video-`date +%Y-%m-%d_%H:%M:%S`.mp4
-bindsym --release $mod+F11 exec ffcast -w rec $HOME/Screenshots/video-`date +%Y-%m-%d_%H:%M:%S`.mp4
+bindsym --release F12 exec screencast.sh -a -i -r Screenshots
+bindsym --release $mod+F12 exec screencast.sh -i -r Screenshots
+bindsym --release $mod+F11 exec screencast.sh -r Screenshots
 bindsym --release $mod+Shift+F11 exec pkill ffmpeg
 
 # use mouse+$mod to drag floating windows to their wanted position
@@ -45,8 +42,6 @@ bindsym $mod+F3 exec discord
 bindsym $mod+F4 exec ~/.config/i3status/calendar.sh
 
 # bind program to workspace
-assign [class=(?i)firefox] $ws2
-assign [class=qutebrowser] $ws2
 assign [class=discord] $ws3
 assign [class="(?i)youtube music"] $ws3
 assign [class=(?i)krita] $ws7
