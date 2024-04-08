@@ -13,6 +13,8 @@ bindsym --release $mod+m exec ~/.config/i3/menu.sh
 
 bindsym --release $mod+b exec /usr/local/bin/mood
 
+bindsym --release $mod+g exec ~/.config/i3/layout.sh
+
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -27,6 +29,8 @@ bindsym --release F12 exec screencast.sh -a -i -r Screenshots
 bindsym --release $mod+F12 exec screencast.sh -i -r Screenshots
 bindsym --release $mod+F11 exec screencast.sh -r Screenshots
 bindsym --release $mod+Shift+F11 exec pkill ffmpeg
+
+bindsym --release $mod+k exec ~/.config/i3/toggle_terminal.sh
 
 # use mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -49,6 +53,8 @@ assign [class=vlc] $ws8
 assign [class=thunderbird] $ws9
 
 for_window [class=URxvt instance=popup] floating enable
+
+for_window [class=URxvt instance=TogglingTerminal] floating enable, resize set 100 ppt 50 ppt, move position 100 ppt 0 ppt
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -9,6 +9,7 @@ anthy
 arandr
 artikulate
 asciidoc
+aseprite
 audacity
 base
 base-devel
