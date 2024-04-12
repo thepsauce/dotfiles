@@ -113,6 +113,8 @@ alias pw="pwmgr"
 
 alias vi="vim -c 'set laststatus=0'"
 
+bindkey '^M' accept-line
+
 mkcd() {
     mkdir "$1" && cd "$1"
 }
@@ -152,8 +154,6 @@ export EDITOR="$VISUAL"
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-alias tmux="tmux -2"
-
 autoload -Uz vcs_info
 precmd() {
     vcs_info
@@ -168,3 +168,6 @@ setopt NO_BEEP
 setopt AUTO_MENU
 setopt MENU_COMPLETE
 setopt AUTO_LIST
+
+autoload -U compinit
+compinit

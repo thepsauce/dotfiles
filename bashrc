@@ -22,6 +22,8 @@ alias pw="pwmgr"
 
 alias vi="vim -c 'set laststatus=0'"
 
+alias lf="lf-wrapper.sh"
+
 mkcd() {
 	mkdir "$1" && cd "$1"
 }
@@ -66,4 +68,3 @@ PS1="\n\[\e[1;37m\]<<< \[\e[1;34m\]\u\[\e[0;39m\]@\[\e[1;93m\]\h\[\e[0;94m\]:\[\
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 
-alias tmux="tmux -2"

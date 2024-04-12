@@ -18,6 +18,7 @@ bind
 blinken
 borg
 borgmatic
+bubblewrap
 calcurse
 cantor
 chafa
@@ -25,7 +26,6 @@ clang
 cmake
 cmark
 ctags
-ctpv-git
 ddgr
 dhclient
 dialog
@@ -49,6 +49,7 @@ fcitx5-gtk
 fcitx5-mozc
 fcitx5-qt
 feh
+ffmpegthumbnailer
 firefox
 fontforge
 freetube
@@ -68,6 +69,7 @@ gtkwave
 gvim
 hdparm
 hexedit
+highlight
 htop
 hunspell
 i3-wm
@@ -129,7 +131,6 @@ microsoft-office-appimage
 minuet
 mold
 mtools
-mtpaint
 musescore
 mutt
 nano
@@ -197,6 +198,7 @@ qutebrowser
 raylib
 razercfg
 remind
+rmlint
 rocs
 rsync
 rtorrent
@@ -215,7 +217,6 @@ shotcut
 skk-jisyo
 slop
 speedtest-cli
-st
 steam
 step
 strace
