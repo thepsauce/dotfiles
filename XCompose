@@ -12,6 +12,8 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 
 <Multi_key> <bar> <bar>			: "‖"	U2016 # DOUBLE VERTICAL LINE
 
+<Multi_key> <i> <n> <t>			: "∫"	U222B # INTEGRAL
+
 <Multi_key> <C> <minus>			: "∈"	U2208 # ELEMENT OF
 
 <Multi_key> <g> <A>			: "Α"	U0391 # GREEK CAPITAL LETTER ALPHA

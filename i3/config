@@ -32,6 +32,11 @@ bindsym --release $mod+Shift+F11 exec pkill ffmpeg
 
 bindsym --release $mod+k exec ~/.config/i3/toggle_terminal.sh
 
+bindsym --release $mod+q exec ~/.config/i3/switch_layout.sh
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
 # use mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -39,22 +44,20 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvt -e screen
 bindsym $mod+Shift+Return exec gvim
 bindsym $mod+F2 exec qutebrowser
 bindsym $mod+F3 exec discord
 bindsym $mod+F4 exec ~/.config/i3status/calendar.sh
 
 # bind program to workspace
-assign [class=discord] $ws3
 assign [class="(?i)youtube music"] $ws3
-assign [class=(?i)krita] $ws7
-assign [class=vlc] $ws8
+assign [class=(?i)krita] $ws8
 assign [class=thunderbird] $ws9
 
 for_window [class=URxvt instance=popup] floating enable
 
-for_window [class=URxvt instance=TogglingTerminal] floating enable, resize set 100 ppt 50 ppt, move position 100 ppt 0 ppt
+for_window [class=URxvt instance=TogglingTerminal] floating enable, resize set 1918 px 540 px, move position center, move up 284
 
 # kill focused window
 bindsym $mod+Shift+q kill

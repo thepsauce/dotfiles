@@ -14,6 +14,7 @@ set textwidth=80
 set autoindent
 set copyindent
 set preserveindent
+set t_ut=
 
 " This makes the ~ disappear at empty bottom lines
 "let &fillchars ..= ',eob: '

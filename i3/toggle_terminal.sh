@@ -20,12 +20,11 @@ fi
 
 if [ -z $WINID ]
 then
-	urxvt -name TogglingTerminal &
+	urxvt -name TogglingTerminal -e screen &
 
 	while [ -z "$WINID" ]
 	do
 		WINID=$(xdotool search --classname TogglingTerminal)
-
 		sleep 0.1
 	done
 

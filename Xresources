@@ -1,8 +1,6 @@
-! General terminal setting (shared between xterm and urxvt)
-*font: xft:BmPlus IBM VGA 8x16:antialias=false:size=24
-*lineSpace: 1
+! General terminal setting (shared between xterm and urxvtg
+*font: xft:BmPlus IBM VGA 8x16:size=24
 
-*termName: xterm-256color
 *scrollBar: false
 
 ! Colors
@@ -31,6 +29,8 @@
 
 ! urxvt
 
+URxvt.termName: rxvt-unicode-256color
+
 URxvt.perl-ext-common: selection-to-clipboard,fullscreen,resize-font
 
 URxvt.skipScroll: true
@@ -45,6 +45,8 @@ URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 ! xterm
+
+XTerm*termName: xterm-256color
 
 ! Scrolling by using Shift-PageUp / Shift-PageDown or mousewheel by default ##
 ! Lines of output you can scroll back over

@@ -20,10 +20,12 @@ borg
 borgmatic
 calcurse
 cantor
+chafa
 clang
 cmake
 cmark
 ctags
+ctpv-git
 ddgr
 dhclient
 dialog
@@ -36,6 +38,7 @@ dotnet-runtime-6.0-bin
 dotnet-sdk-bin
 dotnet-targeting-pack-6.0-bin
 dpkg
+dunst
 dxvk-bin
 efibootmgr
 enchant
@@ -58,6 +61,7 @@ gnu-netcat
 gnuplot
 go
 gparted
+graphicsmagick
 grub
 gtk2
 gtkwave
@@ -79,6 +83,7 @@ itstool
 jq
 jre-openjdk
 kalgebra
+kalker
 kalzium
 kanagram
 kbruch
@@ -95,6 +100,7 @@ ktouch
 kturtle
 kvantum
 kwordquiz
+lf
 lib32-dbus
 lib32-glu
 lib32-gnutls
@@ -105,6 +111,8 @@ lib32-llvm
 lib32-systemd
 lib32-vulkan-radeon
 libplist
+libsixel
+libvips
 linux
 linux-firmware
 linux-headers
@@ -117,6 +125,7 @@ marble
 mecab
 mecab-ipadic
 mecab-ipadic-neologd-git
+microsoft-office-appimage
 minuet
 mold
 mtools
@@ -137,6 +146,7 @@ npm
 nss-mdns
 ntfs-3g
 openconnect
+opencv
 openssh
 openssl-1.1
 os-prober
@@ -158,6 +168,7 @@ python-coverage
 python-decorator
 python-distro
 python-flask-cors
+python-fonttools
 python-installer
 python-markdown
 python-mock
@@ -194,6 +205,7 @@ rust
 rxvt-unicode
 s-nail
 scons
+screen
 sdl2_gfx
 sdl2_image
 sdl2_ttf
@@ -203,6 +215,7 @@ shotcut
 skk-jisyo
 slop
 speedtest-cli
+st
 steam
 step
 strace
@@ -229,20 +242,20 @@ texlive-publishers
 texlive-xetex
 thunderbird
 tk
-tmux
 tor
 tor-browser
 torbrowser-launcher
 torsocks
+trash-cli
 tsocks
 ttf-fira-code
+ttf-hack
 ttf-hanazono
 udisks2
+ueberzug
 unclutter
 unrar
 unzip
-urxvt-fullscreen
-urxvt-resize-font-git
 usbmuxd
 valgrind
 vkd3d-proton-bin
@@ -323,3 +336,4 @@ yarn
 yay
 youtube-music
 zip
+zsh
