@@ -6,7 +6,7 @@ mkdir -p $config_dirs
 
 for d in $config_dirs
 do
-	rm -rf $d/*
+	rm -r $d/*
 	cp -r $HOME/.config/$d/* $d/
 done
 
@@ -24,5 +24,7 @@ done
 cp /usr/share/fonts/font.otb font.otb
 
 cp /usr/local/bin/*.sh bin/
+
+cp ~/.config/picom.conf picom.conf
 
 pacman -Qqe > package-list.txt
