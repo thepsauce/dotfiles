@@ -34,8 +34,17 @@ then
 		application/x-tar)
 			tar -tf "$file"
 			;;
+		application/x-bzip2)
+			tar -tjf "$file"
+			;;
+		application/gzip)
+			tar -tzf "$file"
+			;;
+		application/x-rar)
+			unrar l "$file"
+			;;
 		text/*)
-			highlight -O ansi "$file"
+			highlight -O ansi -lVJ $3 "$file"
 			;;
 		image/*)
 			orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$file")"
@@ -54,8 +63,11 @@ then
 			ffmpegthumbnailer -i "$file" -o "$cache" -s 0
 			draw "$cache" "$@"
 			;;
+		*)
+			file -Lb -- "$file" | fold -s -w $3
+			#ffmpeg -i "$file" -f pulse default
+			;;
 	esac
 fi
 
-file -Lb -- "$1" | fold -s -w "$width"
 exit 0

@@ -53,21 +53,16 @@ cmd restore_trash ${{
 map d
 map m
 
-map au unarchive
-map ae $wine "$f"
-
 # Basic Functions
-map . set hidden!
+map I set hidden!
 map dd trash
 map dr restore_trash
 map p paste
 map x cut
 map y copy
+map <esc> clear
 map <enter> open
 map R reload
-map mf mkfile
-map md mkdir
-map C clear
 
 # Movement
 map gD cd ~/Documents
@@ -75,3 +70,5 @@ map gd cd ~/Downloads
 map gp cd ~/Pictures
 map gc cd ~/.config
 map gt cd ~/.local/share/Trash/files
+
+map Y $echo -n $f | xsel -b

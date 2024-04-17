@@ -7,6 +7,8 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 
 <Multi_key> <s> <h> <r>			: "¯\\_(ツ)_/¯" # SHRUG
 
+<Multi_key> <r> <u> <n>			: "🮲🮳" # RUN
+
 <Multi_key> <v> <3> <slash>		: "∛"   U221b # v 3 / CUBE ROOT
 <Multi_key> <v> <4> <slash>		: "∜"   U221c # v 4 / FOURTH ROOT
 

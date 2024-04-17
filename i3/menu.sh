@@ -6,7 +6,7 @@ entries=(
 	"Calendar,$HOME/.config/i3status/calendar.sh"
 	"Discord,/usr/bin/discord"
 	"Fontforge,/usr/bin/fontforge"
-	"Internet,/usr/bin/qutebrowser"
+	"Internet,/usr/bin/firefox"
 	"Musescore,/usr/bin/mscore"
 	"KICad,/usr/bin/kicad"
 	"Krita,/usr/bin/krita"

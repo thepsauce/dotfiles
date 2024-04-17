@@ -9,11 +9,11 @@ font pango: BmPlus IBM VGA 8x16 12
 #bindsym --release $mod+Shift+slash exec i3lock & systemctl suspend
 bindsym --release $mod+Shift+slash exec systemctl suspend
 
-bindsym --release $mod+m exec ~/.config/i3/menu.sh
+bindsym $mod+m exec ~/.config/i3/menu.sh
 
-bindsym --release $mod+b exec /usr/local/bin/mood
+bindsym $mod+b exec /usr/local/bin/mood
 
-bindsym --release $mod+g exec ~/.config/i3/layout.sh
+smart_borders on
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -30,9 +30,77 @@ bindsym --release $mod+F12 exec screencast.sh -i -r Screenshots
 bindsym --release $mod+F11 exec screencast.sh -r Screenshots
 bindsym --release $mod+Shift+F11 exec pkill ffmpeg
 
-bindsym --release $mod+k exec ~/.config/i3/toggle_terminal.sh
+bindsym $mod+n exec ~/.config/i3/toggle_terminal.sh
 
-bindsym --release $mod+q exec ~/.config/i3/switch_layout.sh
+bindsym $mod+Tab exec ~/.config/i3/switch_layout.sh
+
+bindsym $mod+g mode "gaps"
+
+mode "gaps" {
+	bindsym p mode "move"
+	bindsym r mode "resize"
+
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+p mode "move"
+
+mode "move" {
+	bindsym g mode "gaps"
+	bindsym r mode "resize"
+
+	bindsym h move left 20px
+	bindsym j move down 20px
+	bindsym k move up 20px
+	bindsym l move right 20px
+
+	bindsym Shift+h move left 5px
+	bindsym Shift+j move down 5px
+	bindsym Shift+k move up 5px
+	bindsym Shift+l move right 5px
+
+	bindsym Control+h move left 50px
+	bindsym Control+j move down 50px
+	bindsym Control+k move up 50px
+	bindsym Control+l move right 50px
+
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+	bindsym g mode "gaps"
+	bindsym p mode "move"
+
+	bindsym h resize shrink width 20px
+	bindsym j resize grow height 20px
+	bindsym k resize shrink height 20px
+	bindsym l resize grow width 20px
+
+	bindsym Shift+h resize shrink width 5px
+	bindsym Shift+j resize grow height 5px
+	bindsym Shift+k resize shrink height 5px
+	bindsym Shift+l resize grow width 5px
+
+	bindsym Control+h resize shrink width 50px
+	bindsym Control+j resize grow height 50px
+	bindsym Control+k resize shrink height 50px
+	bindsym Control+l resize grow width 50px
+
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
@@ -53,7 +121,8 @@ bindsym $mod+F4 exec ~/.config/i3status/calendar.sh
 # bind program to workspace
 assign [class="(?i)youtube music"] $ws3
 assign [class=(?i)krita] $ws8
-assign [class=thunderbird] $ws9
+
+for_window [class=thunderbird] , move scratchpad
 
 for_window [class=URxvt instance=popup] floating enable
 
@@ -64,42 +133,19 @@ bindsym $mod+Shift+q kill
 
 new_window pixel 1
 
-gaps inner 0
-gaps outer 0
+gaps inner 6
 
 # change focus
 bindsym $mod+h focus left
-bindsym $mod+n focus down
-bindsym $mod+e focus up
-bindsym $mod+i focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
-bindsym $mod+Shift+n move down
-bindsym $mod+Shift+e move up
-bindsym $mod+Shift+i move right
-
-# resize focused window
-bindsym $mod+j resize shrink width 1px or 1ppt
-bindsym $mod+l resize grow height 1px or 1ppt
-bindsym $mod+u resize shrink height 1px or 1ppt
-bindsym $mod+y resize grow width 1px or 1ppt
-bindsym $mod+Shift+j resize shrink width 10px or 10ppt
-bindsym $mod+Shift+l resize grow height 10px or 10ppt
-bindsym $mod+Shift+u resize shrink height 10px or 10ppt
-bindsym $mod+Shift+y resize grow width 10px or 10ppt
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
 bindsym $mod+v split h
@@ -108,7 +154,7 @@ bindsym $mod+v split h
 bindsym $mod+s split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+t fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
@@ -171,8 +217,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+f exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+r mode "resize"
-
 # class                 border  backgr. text    indicator child_border
 client.focused          #ecd200 #ecd200 #ffffff #2e9ef4   #837711
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
@@ -183,6 +227,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 #d7eabe
+#goodbye old friend :( (SOON)
 bar {
 	colors {
 		background #000016
@@ -195,13 +240,18 @@ bar {
 		urgent_workspace   #2f343a #900000 #ffffff
 	}
 	position top
-	status_command exec /home/steves/.config/i3status/mybar.sh
+	status_command exec $HOME/.config/i3status/mybar.sh
 }
 
 # On startup
-#exec --no-startup-id picom -CGb
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+exec --no-startup-id picom
 exec --no-startup-id tracker.sh
 # set wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/background.jpg
+exec --no-startup-id feh --bg-fill $HOME/Pictures/background.jpg
 # input manager
 exec --no-startup-id fcitx5
+# mail (opens in scratchpad)
+exec --no-startup-id thunderbird
+

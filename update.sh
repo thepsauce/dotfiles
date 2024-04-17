@@ -15,7 +15,7 @@ cp /usr/local/bin/*.sh bin/
 
 cp ~/.vim/pack/other/start/awesome-vim-colorschemes/colors/jellybeans.vim vim/colors/jellybeans.vim
 
-dots="gdbinit gvimrc vimrc zshrc bashrc XCompose xprofile Xmodmap Xresources"
+dots="screenrc gdbinit gvimrc vimrc zshrc bashrc XCompose xprofile Xresources"
 for d in $dots
 do
 	cp -r $HOME/.$d $d

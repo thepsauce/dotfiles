@@ -16,6 +16,21 @@ set copyindent
 set preserveindent
 set t_ut=
 
+set mouse=a
+
+" Set up vertical vs block cursor for insert/normal mode
+if &term =~ "screen."
+	let &t_ti.="\eP\e[1 q\e\\"
+	let &t_SI.="\eP\e[5 q\e\\"
+	let &t_EI.="\eP\e[1 q\e\\"
+	let &t_te.="\eP\e[0 q\e\\"
+else
+	let &t_ti.="\<Esc>[1 q"
+	let &t_SI.="\<Esc>[5 q"
+	let &t_EI.="\<Esc>[1 q"
+	let &t_te.="\<Esc>[0 q"
+endif
+
 " This makes the ~ disappear at empty bottom lines
 "let &fillchars ..= ',eob: '
 
@@ -98,3 +113,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:stdin") && filereadable("session
 " Fuzzy vim (kind of replaces dmenu)
 import './.vim/pack/other/start/scope.vim/autoload/fuzzy.vim' as fuzzy
 nnoremap Z <ScriptCmd>:call s:fuzzy.File()<CR>
+
+hi Normal ctermbg=NONE
+hi NonText ctermbg=NONE

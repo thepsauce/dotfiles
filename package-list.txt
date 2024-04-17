@@ -129,7 +129,9 @@ mecab-ipadic
 mecab-ipadic-neologd-git
 microsoft-office-appimage
 minuet
+moc-pulse
 mold
+mpv
 mtools
 musescore
 mutt
@@ -156,7 +158,9 @@ parley
 pass
 pdfjs
 picom
+polybar
 protontricks
+psensor
 pulseaudio
 pulsemixer
 pulseview
@@ -243,6 +247,7 @@ texlive-publishers
 texlive-xetex
 thunderbird
 tk
+tmux
 tor
 tor-browser
 torbrowser-launcher
