@@ -1,4 +1,4 @@
-set guifont=BmPlus\ IBM\ VGA\ 8x16
+set guifont=Pixy\ 12
 
 set guioptions=c!
 

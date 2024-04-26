@@ -1,5 +1,5 @@
-! General terminal setting (shared between xterm and urxvtg
-*font: xft:BmPlus IBM VGA 8x16:size=24
+! General terminal setting (shared between xterm and urxvt)
+*font: xft:Pixy:medium:size=12
 
 *scrollBar: false
 
@@ -28,6 +28,8 @@
 *color15: #ffffff
 
 ! urxvt
+
+!URxvt.letterSpace: -1
 
 URxvt.termName: rxvt-unicode-256color
 

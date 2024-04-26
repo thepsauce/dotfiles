@@ -5,15 +5,17 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+source /usr/share/blesh/ble.sh --noattach
+set -o vi
+
+shopt -s checkwinsize
+
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
 bind '"\t": menu-complete'
 
 alias rm="rm -I"
-
-alias ls="ls --color=auto"
-alias grep="grep --color=auto"
 
 alias ll="ls -l"
 alias la="ls -lA"
@@ -23,6 +25,10 @@ alias pw="pwmgr"
 alias vi="vim -c 'set laststatus=0'"
 
 alias lf="lf-wrapper.sh"
+
+alias ls="exa"
+
+alias alacritty='WINIT_X11_SCALE_FACTOR=1 alacritty'
 
 mkcd() {
 	mkdir "$1" && cd "$1"
@@ -44,17 +50,9 @@ cdc() {
 	fi
 }
 
-g() {
-	pattern="$1"
-	files="$2"
-	if [ -z "$files" ]
-	then
-		files="."
-	fi
-	grep -n -d recurse -D skip --binary-files=without-match --color=always -C 1 "$pattern" "$files" | less -R
-}
+export CPATH="/usr/include/freetype2"
 
-export HISTCONTROL=erasedups
+export HISTCONTROL="erasedups:ignorespace"
 export HISTSIZE=20000
 #history -r $HOME/.bash_favorite_history
 
@@ -66,12 +64,19 @@ git_ps1=$(git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\
 PS1="\n\[\e[1;37m\]<<< \[\e[1;34m\]\u\[\e[0;39m\]@\[\e[1;93m\]\h\[\e[0;94m\]:\[\e[1;93m\]\w\[\e[0;39m\]\[\e[1;35m\] $git_ps1\[\e[0;39m\]\[\e[1;37m\]>>>\[\e[0;39m\]\n\$ "
 
 screen_cd() {
-	cd $@
-	screen -X chdir $@
+	cd "$@"
+	if [ -n "$STY" ]
+	then
+		screen -X chdir "$@"
+	fi
 }
 
 alias cd=screen_cd
 
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
+source /usr/share/doc/pkgfile/command-not-found.bash
 
+eval "$(zoxide init bash)"
+
+[[ ${BLE_VERSION-} ]] && ble-attach

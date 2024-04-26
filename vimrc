@@ -108,6 +108,15 @@ function! BuildProject(args)
 	endif
 endfunction
 
+function! ScriptMode()
+	set tabstop=4
+	set expandtab
+	set softtabstop=4
+	set shiftwidth=4
+endfunction
+
+command! -nargs=0 SMode :call ScriptMode()
+
 autocmd VimEnter * if argc() == 0 && !exists("s:stdin") && filereadable("session.vim") | source session.vim | endif
 
 " Fuzzy vim (kind of replaces dmenu)

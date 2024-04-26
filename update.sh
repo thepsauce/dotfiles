@@ -21,10 +21,12 @@ do
 	cp -r $HOME/.$d $d
 done
 
-cp /usr/share/fonts/font.otb font.otb
+cp /usr/share/fonts/Pixy.ttf Pixy.ttf
 
 cp /usr/local/bin/*.sh bin/
 
 cp ~/.config/picom.conf picom.conf
+
+cp /etc/fonts/conf.d/* fontconfig/
 
 pacman -Qqe > package-list.txt

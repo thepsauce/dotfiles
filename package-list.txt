@@ -15,6 +15,7 @@ base
 base-devel
 bash-completion
 bind
+blesh-git
 blinken
 borg
 borgmatic
@@ -42,17 +43,20 @@ dunst
 dxvk-bin
 efibootmgr
 enchant
+eza
 fcitx5
 fcitx5-anthy
 fcitx5-configtool
 fcitx5-gtk
 fcitx5-mozc
 fcitx5-qt
+fd
 feh
 ffmpegthumbnailer
 firefox
 fontforge
 freetube
+freetype2-demos
 fwupd
 fzf
 gdb
@@ -79,6 +83,7 @@ icoutils
 ifuse
 imagemagick
 inetutils
+inkscape
 intel-ucode
 intltool
 itstool
@@ -113,6 +118,7 @@ lib32-llvm
 lib32-systemd
 lib32-vulkan-radeon
 libplist
+libptytty
 libsixel
 libvips
 linux
@@ -158,6 +164,7 @@ parley
 pass
 pdfjs
 picom
+pkgfile
 polybar
 protontricks
 psensor
@@ -202,13 +209,16 @@ qutebrowser
 raylib
 razercfg
 remind
+ripgrep
 rmlint
 rocs
+rofi
+rofi-calc
 rsync
 rtorrent
 ruby
 rust
-rxvt-unicode
+rxvt-unicode-pixbuf-patched
 s-nail
 scons
 screen
@@ -257,6 +267,7 @@ tsocks
 ttf-fira-code
 ttf-hack
 ttf-hanazono
+ttf-nerd-fonts-symbols
 udisks2
 ueberzug
 unclutter
@@ -342,4 +353,5 @@ yarn
 yay
 youtube-music
 zip
+zoxide
 zsh

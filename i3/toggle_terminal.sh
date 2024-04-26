@@ -20,7 +20,7 @@ fi
 
 if [ -z $WINID ]
 then
-	urxvt -name TogglingTerminal -e screen &
+	alacritty --class Alacritty,TogglingTerminal -e screen &
 
 	while [ -z "$WINID" ]
 	do
