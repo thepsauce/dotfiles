@@ -26,8 +26,23 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <r> <c>			: Ue1a7
 <Multi_key> <r> <w>			: Ue1a8
 
+<Multi_key> <underscore> <a>		: U2090
+<Multi_key> <underscore> <e>		: U2091
+<Multi_key> <underscore> <o>		: U2092
+<Multi_key> <underscore> <x>		: U2093
+<Multi_key> <underscore> <h>		: U2095
+<Multi_key> <underscore> <k>		: U2096
+<Multi_key> <underscore> <l>		: U2097
+<Multi_key> <underscore> <m>		: U2098
+<Multi_key> <underscore> <n>		: U2099
+<Multi_key> <underscore> <p>		: U209a
+<Multi_key> <underscore> <s>		: U209b
+<Multi_key> <underscore> <t>		: U209c
+
 <Multi_key> <f> <asciitilde>		: "ƒ"	U0192 # function
 <Multi_key> <asciitilde> <f>		: "ƒ"	U0192 # function
+
+<Multi_key> <bar> <greater>		: "↦" U21a6 # maps to
 
 <Multi_key> <i> <n> <t>			: "∫"	U222b # INTEGRAL
 

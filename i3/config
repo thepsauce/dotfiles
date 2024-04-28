@@ -158,8 +158,8 @@ bindsym $mod+F3 exec discord
 bindsym $mod+F4 exec ~/.config/i3status/calendar.sh
 
 # bind program to workspace
-assign [class="(?i)youtube music"] $ws3
-assign [class=(?i)krita] $ws8
+assign [class="(?i)youtube music"] 3
+assign [class=(?i)krita] 8
 
 for_window [class=thunderbird] , move scratchpad
 

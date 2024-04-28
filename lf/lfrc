@@ -72,3 +72,7 @@ map gc cd ~/.config
 map gt cd ~/.local/share/Trash/files
 
 map Y $echo -n $f | xsel -b
+
+map J half-down
+map K half-up
+
