@@ -14,6 +14,8 @@ audacity
 base
 base-devel
 bash-completion
+bdf2psf
+beep
 bind
 blesh-git
 blinken
@@ -32,6 +34,7 @@ ddgr
 dhclient
 dialog
 discord
+discordo-git
 dmenu
 dmg2img
 docker
@@ -43,8 +46,12 @@ dpkg
 dunst
 dxvk-bin
 efibootmgr
+elixir
 enchant
 eza
+fastfetch
+fbida
+fbterm
 fcitx5
 fcitx5-anthy
 fcitx5-configtool
@@ -54,6 +61,7 @@ fcitx5-qt
 fd
 feh
 ffmpegthumbnailer
+fim
 firefox
 fontforge
 freetube
@@ -88,6 +96,7 @@ inetutils
 intel-ucode
 intltool
 itstool
+jfbview
 jq
 jre-openjdk
 kalgebra
@@ -108,6 +117,7 @@ ktouch
 kturtle
 kvantum
 kwordquiz
+lesspipe
 lf
 lib32-dbus
 lib32-glu
@@ -145,7 +155,7 @@ musescore
 mutt
 nano
 nasm
-neofetch
+neomutt
 net-tools
 networkmanager
 nfs-utils
@@ -174,6 +184,7 @@ otf-hermit-nerd
 otf-monaspace-nerd
 otf-opendyslexic-nerd
 otf-overpass-nerd
+otf2bdf
 p7zip
 parley
 pass
@@ -184,6 +195,7 @@ polybar
 poppler-glib
 protontricks
 psensor
+psftools
 pulseaudio
 pulsemixer
 pulseview
@@ -201,6 +213,7 @@ python-installer
 python-markdown
 python-mock
 python-nose
+python-notify2
 python-orjson
 python-pip
 python-pipx
@@ -211,6 +224,7 @@ python-setuptools-scm
 python-tabview
 python-tldextract
 python-vdf
+python-virtualenv
 python-waitress
 python-wheel
 qalculate-qt
@@ -241,7 +255,9 @@ sdl2_image
 sdl2_ttf
 sdl_gfx
 setconf
+sherlock-git
 shotcut
+shuffle
 skk-jisyo
 slop
 speedtest-cli
@@ -345,6 +361,7 @@ vulkan-headers
 vulkan-radeon
 vulkan-tools
 vulkan-validation-layers
+w3m
 weechat
 weechat-matrix
 wget
@@ -417,6 +434,7 @@ yarn
 yay
 yazi
 youtube-music
+yt-dlp
 zip
 zoxide
 zsh

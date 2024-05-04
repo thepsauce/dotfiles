@@ -15,10 +15,14 @@ bind '"\e[B": history-search-forward'
 
 bind '"\t": menu-complete'
 
+alias sudo="sudo "
+
 alias rm="rm -I"
 
 alias ll="ls -l"
 alias la="ls -lA"
+
+alias fd="fd -H"
 
 alias pw="pwmgr"
 
@@ -28,9 +32,12 @@ alias ls="exa"
 
 alias alacritty='WINIT_X11_SCALE_FACTOR=1 alacritty'
 
+alias play='mpv --no-audio-display --no-video'
+
 mkcd() {
-	mkdir "$1" && cd "$1"
+	mkdir $@ && cd "$_"
 }
+
 cdb() {
 	cd ~/ext || return 1
 	if [ -n "$1" ]
@@ -105,3 +112,10 @@ source /usr/share/fzf/completion.bash
 source /usr/share/doc/pkgfile/command-not-found.bash
 
 [[ ${BLE_VERSION-} ]] && ble-attach
+
+# start tmux automatically in the first tty
+WHO="$(who am i | awk '{print $2}')"
+if [ "$WHO" = "tty1" ]
+then
+	tmux
+fi

@@ -1,0 +1,47 @@
+source ~/.config/neomutt/account.name
+
+# an account file looks like:
+set folder = imaps://XXX@imap.gmail.com/
+
+account-hook $folder 'set \
+	imap_user = "XXX" \
+	imap_pass = "`pass show XXX`" \
+	imap_authenticators = "oauthbearer:xoauth2" \
+	imap_oauth_refresh_command = "path_to_script"'
+
+folder-hook $folder 'set \
+	record = "+[Gmail]/Sent Mail" \
+	postponed = "+[Gmail]/Drafts" \
+	mbox = "+[Gmail]/All Mail" \
+	smtp_url = "smtps://XXX@smtp.gmail.com/" \
+	smtp_pass = "`pass show XXX`" \
+	smtp_authenticators = "oauthbearer:xoauth2" \
+	smtp_oauth_refresh_command = "path_to_script" \
+	from = "XXX" \
+	realname = "XXX"'
+
+mailboxes $folder #"+[Gmail]/Sent Mail" +[Gmail]/Drafts +[Gmail]/Spam +[Gmail]/Bin "+[Gmail]/All Mail" +[Gmail]/Starred +[Gmail]/Important
+
+# or simpler (without all the oauth stuff that is needed for gmail):
+
+set folder = "imaps://XXX@imap.gmx.com/"
+
+account-hook $folder 'set \
+	imap_user = "XXX" \
+	imap_pass = "`pass show XXX`"
+	; unset imap_authenticators \
+	imap_oauth_refresh_command'
+
+folder-hook $folder 'set \
+	record = "+Sent" \
+	postponed = "+Drafts" \
+	trash = "+Trash" \
+	smtp_url = "smtps://XXX@mail.gmx.com/" \
+	smtp_pass = "`pass show XXX`" \
+	from = "XXX" \
+	realname = "XXX" \
+	; unset mbox \
+	smtp_authenticators \
+	smtp_oauth_refresh_command'
+
+mailboxes $folder #+Favorites +Sent +Drafts +Spam +Trash

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-urxvt -name popup -e vim -c Calendar
+alacritty --class Alacritty,popup -e vim -c Calendar

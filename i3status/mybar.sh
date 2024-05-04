@@ -25,7 +25,7 @@ done &
 
 get_secondly_bar() {
 	# react dynamically to time and volume
-	time=$(date '+ %a %d-%m-%y  %T')
+	time=$(date '+ %a %y-%m-%d  %T')
 	volume_muted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
 	if [ "$volume_muted" = "yes" ]
 	then

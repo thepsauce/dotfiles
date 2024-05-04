@@ -1,7 +1,5 @@
 set $mod Mod4
 
-# TODO: find a way to replace this with Pixy, for some reason it has
-# antialiasing enabled but I cannot disable it, it makes me so mad
 font pango: Pixy
 
 # i3lock has a weird bug where typing the valid password won't unlock it
@@ -122,20 +120,20 @@ mode "resize" {
 	bindsym g mode "gaps"
 	bindsym p mode "move"
 
-	bindsym h resize shrink width 20px
+	bindsym l resize shrink width 20px
 	bindsym j resize grow height 20px
 	bindsym k resize shrink height 20px
-	bindsym l resize grow width 20px
+	bindsym h resize grow width 20px
 
-	bindsym Shift+h resize shrink width 5px
+	bindsym Shift+l resize shrink width 5px
 	bindsym Shift+j resize grow height 5px
 	bindsym Shift+k resize shrink height 5px
-	bindsym Shift+l resize grow width 5px
+	bindsym Shift+h resize grow width 5px
 
-	bindsym Control+h resize shrink width 50px
+	bindsym Control+l resize shrink width 50px
 	bindsym Control+j resize grow height 50px
 	bindsym Control+k resize shrink height 50px
-	bindsym Control+l resize grow width 50px
+	bindsym Control+h resize grow width 50px
 
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
@@ -161,7 +159,7 @@ bindsym $mod+F4 exec ~/.config/i3status/calendar.sh
 assign [class="(?i)youtube music"] 3
 assign [class=(?i)krita] 8
 
-for_window [class=thunderbird] , move scratchpad
+for_window [class=Alacritty instance=scratchpad] , move scratchpad
 
 for_window [class=Alacritty instance=popup] floating enable
 
@@ -288,5 +286,5 @@ exec --no-startup-id feh --bg-fill $HOME/Pictures/background.jpg
 # input manager
 exec --no-startup-id fcitx5
 # mail (opens in scratchpad)
-exec --no-startup-id thunderbird
+exec --no-startup-id alacritty --class Alacritty,scratchpad -e tmux attach
 

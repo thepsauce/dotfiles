@@ -125,3 +125,8 @@ nnoremap Z <ScriptCmd>:call s:fuzzy.File()<CR>
 
 hi Normal ctermbg=NONE
 hi NonText ctermbg=NONE
+
+if empty($DISPLAY)
+	colo corn
+endif
+ 

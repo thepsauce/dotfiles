@@ -1,0 +1,117 @@
+#########
+# pager #
+#########
+# disable '+' markers at the beginning of every wrapped line
+set markers = no
+# show these headers
+ignore *
+unignore Subject: From: To: CC: BCC: Date:
+# show header by this order
+unhdr_order *
+hdr_order Subject: From: To: CC: BCC: Date:
+# show index on top and pager below
+set pager_context = 3
+set pager_index_lines = 6
+# stop at the bottom of a message instead of go to next message
+set pager_stop = yes
+# email content
+auto_view text/html                                   # view html automatically
+alternative_order text/plain text/enriched text/html  # save html for last
+set mailcap_path = ~/.config/neomutt/mailcap
+
+#########
+# index #
+#########
+# sort method
+set sort = "date"
+set sort_aux = "last-date-received"
+# index scroll instead of turning pages
+set menu_scroll
+# do not show indicators for emails only for me in index
+set to_chars = "+ TCFL"
+# default operate on tagged messages
+set auto_tag = yes
+# merge text attributes between layers
+set cursor_overlay = yes
+# do not show help message on top
+set help = no
+# Show alias entry name instead of email address in the index
+set reverse_alias = yes
+
+set history = 512
+
+###########
+# sidebar #
+###########
+set sidebar_visible = yes
+set sidebar_short_path = yes
+set sidebar_folder_indent = yes
+set sidebar_indent_string = '  '
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats = yes
+
+###########
+# Formats #
+###########
+# attachments, The "%.999d%* " ensures to show as much of the filename as possible.
+set attach_format = "%u%D%I%t%2n %T%.999d%*  [%.4m/%.10M, %.6e%?C?, %C?, %s]"
+# forward subject formats
+set forward_format = "Fwd: %s"
+# index (list of mails)
+set index_format = "%4C %Z %[%y/%m/%d] %-15.15L (%?l?%4l&%4c?) %s"
+# pager format
+set pager_format = "<%Z> %C/%m: %.999s%*  %n -- (%P)"
+# sidebar format: Boxname [New messages]  Total size
+set sidebar_format = "%B %?N?[%N]?%* %S"
+# statusline
+set status_format = "[%f](%r) [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?] (%s/%S)%>-(%P)"
+
+#########
+# local #
+#########
+# cache folder for message body and headers
+set message_cachedir = "~/.cache/mutt/bodies"
+set header_cache = "~/.cache/mutt/headers"
+# save attachments to downloads folder
+set attach_save_dir = "~/Downloads"
+set abort_noattach = ask-yes
+set abort_noattach_regexp = "attach|附件|查收"
+
+
+##############
+# connection #
+##############
+
+source ~/.config/mutt/accounts
+
+set spoolfile = $folder
+
+# interval of mail checking, this hangs mutt when checking
+set mail_check = 30
+set timeout = 10
+# check all mailboxes
+#set imap_check_subscribed = yes
+
+set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
+
+###############
+# send emails #
+###############
+# default recipient and subject when reply
+set fast_reply = yes
+# include original message when reply
+set include = yes
+# do not save sent email. otherwise, save to `record'
+set copy = no
+
+############
+# encoding #
+############
+set rfc2047_parameters=yes
+set assumed_charset="us-ascii:gb18030:utf-8"
+set attach_charset="us-ascii:gb18030:utf-8"
+
+source ~/.config/mutt/aliases
+source ~/.config/neomutt/colors
+source ~/.config/neomutt/keybindings
+

@@ -1,0 +1,58 @@
+# Basic colors
+mono bold      bold
+mono underline underline
+mono indicator reverse
+mono error     bold
+color normal    default default
+color error     red     default
+color bold      black   default
+color underline black   default
+color indicator black   brightyellow
+
+# Index colors:
+color index default       default "~A"    # all messages
+color index brightgreen   default "~N"    # new messages
+color index brightred     default "~D"    # deleted messages
+color index brightyellow  default "~F"    # flagged messages
+color index blue          default "~T"    # tagged messages
+
+# Header colors (you have to put hdrdefault before others):
+color hdrdefault brightgreen default
+color header brightred     default "^(Subject):"
+color header brightmagenta default "^(From):"
+color header brightblue    default "^(To):"
+color header brightcyan    default "^(CC|BCC):"
+color header brightwhite   default "^(Date):"
+
+color tilde black default
+color message cyan default
+color markers red white
+color attachment white default
+color search brightmagenta default
+color status brightyellow default
+color quoted green default
+color quoted1 blue default
+color quoted2 cyan default
+color quoted3 yellow default
+color quoted4 red default
+color quoted5 brightred default
+color signature brightgreen default
+
+color body brightred default "[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+" # Email addresses
+color body blue default "(https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+" # URL
+color body green default "\`[^\`]*\`" # Green text between ` and `
+color body brightblue default "^# \.*" # Headings as bold blue
+color body brightcyan default "^## \.*" # Subheadings as bold cyan
+color body brightgreen default "^### \.*" # Subsubheadings as bold green
+color body yellow default "^(\t| )*(-|\\*) \.*" # List items as yellow
+color body brightcyan default "[;:][-o][)/(|]" # emoticons
+color body brightcyan default "[;:][)(|]" # emoticons
+color body brightcyan default "[ ][*][^*]*[*][ ]?" # more emoticon?
+color body brightcyan default "[ ]?[*][^*]*[*][ ]" # more emoticon?
+color body red default "(BAD signature)"
+color body cyan default "(Good signature)"
+color body brightblack default "^gpg: Good signature .*"
+color body brightyellow default "^gpg: "
+color body brightyellow red "^gpg: BAD signature from.*"
+mono body bold "^gpg: Good signature"
+mono body bold "^gpg: BAD signature from.*"
