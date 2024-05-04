@@ -16,7 +16,7 @@ cp /usr/local/bin/*.sh bin/
 cp ~/.vim/pack/other/start/awesome-vim-colorschemes/colors/jellybeans.vim vim/colors/jellybeans.vim
 
 mkdir -p neomutt
-cp ~/.config/neomutt/{neomuttrc,mailcap,aliases,keybindings,colors} neomutt/
+cp ~/.config/neomutt/{neomuttrc,mailcap,keybindings,colors} neomutt/
 
 dots="screenrc gdbinit gvimrc vimrc zshrc bashrc XCompose xprofile Xresources gitconfig"
 for d in $dots
