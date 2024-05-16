@@ -1,0 +1,12 @@
+[Unit]
+Description=Cleans up the bash history (remove duplicates)
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/steves/.config/systemd/user/bash_clean.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=shutdown.target

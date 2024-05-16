@@ -1,3 +1,4 @@
+activity-log-manager
 adobe-source-han-sans-jp-fonts
 adobe-source-han-serif-jp-fonts
 alacritty
@@ -133,6 +134,7 @@ libptytty
 libsixel
 libvips
 linux
+linux-discord-rich-presence
 linux-firmware
 linux-headers
 llvm
@@ -160,6 +162,7 @@ net-tools
 networkmanager
 nfs-utils
 ninja
+nmap
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
@@ -253,6 +256,7 @@ screen
 sdl2_gfx
 sdl2_image
 sdl2_ttf
+sdl3-git
 sdl_gfx
 setconf
 sherlock-git
@@ -348,6 +352,7 @@ ttf-tinos-nerd
 ttf-ubuntu-mono-nerd
 ttf-ubuntu-nerd
 ttf-victor-mono-nerd
+twitch-cli
 udisks2
 ueberzugpp
 unclutter
@@ -435,6 +440,8 @@ yay
 yazi
 youtube-music
 yt-dlp
+zathura
+zeitgeist-explorer
 zip
 zoxide
 zsh

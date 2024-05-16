@@ -19,6 +19,12 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <s> <v>			: "╯"	U256f
 <Multi_key> <s> <x>			: "╰"	U2570
 <Multi_key> <s> <f>			: "│"	U2502
+<Multi_key> <s> <m>			: "╭      ╮\x0a│      │\x0a│      │\x0a╰      ╯\x0a"
+<Multi_key> <s> <2> <m>			: "╭      ╮\x0a│      │\x0a│      │\x0a╰      ╯\x0a"
+<Multi_key> <s> <3> <m>			: "╭         ╮\x0a│         │\x0a│         │\x0a│         │\x0a╰         ╯\x0a"
+<Multi_key> <s> <v>			: "╭  ╮\x0a│  │\x0a│  │\x0a╰  ╯\x0a"
+<Multi_key> <s> <2> <v>			: "╭  ╮\x0a│  │\x0a│  │\x0a╰  ╯\x0a"
+<Multi_key> <s> <3> <v>			: "╭  ╮\x0a│  │\x0a│  │\x0a│  │\x0a╰  ╯\x0a"
 
 <Multi_key> <r> <q>			: Ue1a4
 <Multi_key> <r> <f>			: Ue1a5

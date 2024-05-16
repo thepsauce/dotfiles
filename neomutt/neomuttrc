@@ -88,7 +88,11 @@ set spoolfile = $folder
 
 # interval of mail checking, this hangs mutt when checking
 set mail_check = 30
+set imap_poll_timeout = 0
+set imap_keep_alive = 180
 set timeout = 10
+set imap_fetch_chunk_size = 32
+set imap_passive = no
 # check all mailboxes
 #set imap_check_subscribed = yes
 

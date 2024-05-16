@@ -65,7 +65,7 @@ mode "rename" {
 	bindsym Shift+9 rename workspace to 19, mode "default"
 	bindsym Shift+0 rename workspace to 20, mode "default"
 
-	bindsym c exec i3-input -F 'rename workspace to "%s"' -P 'New name: ', mode "default"
+	bindsym n exec i3-input -F 'rename workspace to "%s"' -P 'New name: ', mode "default"
 
         bindsym Return mode "default"
         bindsym Escape mode "default"

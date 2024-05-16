@@ -65,7 +65,7 @@ bind   attach   <enter>   view-attach
 
 # macros
 macro  index,pager y "<change-folder>?<toggle-mailboxes>" "show incoming mailboxes list"
-macro  generic,index,pager \cr ":source ~/.config/neomutt/muttrc\n" "Reload mutt's configuration file"
+macro  generic,index,pager \cr ":source ~/.config/neomutt/neomuttrc\n" "Reload mutt's configuration file"
 macro  pager \cb "|urlscan\n" "call urlscan to extract URLs out of a message"
 macro  generic,index,pager "$" "<imap-fetch-mail><sync-mailbox><check-stats>"
 macro  compose a "<attach-file>$PWD<tab><tab><tab>" " a hack to attach file of current dir

@@ -37,5 +37,5 @@ if $image
 then
 	ffmpeg -f x11grab -draw_mouse 0 -s "$W"x"$H" -i :0.0+$X,$Y -vframes 1 "$path/screenshot-$date.png"
 else
-	ffmpeg -s "$W"x"$H" -framerate 25 -f x11grab -i :0.0+$X,$Y -f pulse -i $audio_device -c:v libx264 -preset ultrafast -c:a aac -filter:a "volume=3.2" "$path/video-$date.mp4"
+	ffmpeg -s "$W"x"$H" -framerate 25 -f x11grab -i :0.0+$X,$Y -f pulse -i $audio_device -c:v libx264 -preset ultrafast -c:a aac -filter:a "volume=4.2" "$path/video-$date.mp4"
 fi

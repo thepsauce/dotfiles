@@ -1,3 +1,6 @@
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim"
+
 " General
 filetype plugin on
 syntax on
@@ -6,8 +9,10 @@ filetype indent on
 set number relativenumber
 set incsearch
 set hlsearch
-set tabstop=8
-set shiftwidth=8
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 set wrap
 set cole=1
 set textwidth=80
@@ -15,6 +20,11 @@ set autoindent
 set copyindent
 set preserveindent
 set t_ut=
+
+" For my small laptop screen (this is also good for bigger screens actually
+" when you have lots of split windows)
+set winwidth=114
+set winheight=35
 
 set mouse=a
 
@@ -108,16 +118,7 @@ function! BuildProject(args)
 	endif
 endfunction
 
-function! ScriptMode()
-	set tabstop=4
-	set expandtab
-	set softtabstop=4
-	set shiftwidth=4
-endfunction
-
-command! -nargs=0 SMode :call ScriptMode()
-
-autocmd VimEnter * if argc() == 0 && !exists("s:stdin") && filereadable("session.vim") | source session.vim | endif
+au VimEnter * if argc() == 0 && !exists("s:stdin") && filereadable("session.vim") | source session.vim | endif
 
 " Fuzzy vim (kind of replaces dmenu)
 import './.vim/pack/other/start/scope.vim/autoload/fuzzy.vim' as fuzzy
@@ -127,6 +128,9 @@ hi Normal ctermbg=NONE
 hi NonText ctermbg=NONE
 
 if empty($DISPLAY)
-	colo corn
+	colo industry
+	hi! link Conceal Operator
 endif
- 
+
+nnoremap ; :
+
