@@ -1,3 +1,5 @@
+**This repo exists so I don't lose all my config when my PC explodes.**
+
 # Vim
 
 ## Vim plugins:
@@ -26,3 +28,14 @@
 
 [ZoomWin](https://github.com/vim-scripts/ZoomWin) Put a window into fullscreen.
 
+# Weechat
+
+## [Weechat plugins](https://weechat.org/scripts/)
+
+[atcomplete.pl](https://weechat.org/scripts/source/atcomplete.pl.html/)
+[aesthetic.py](https://weechat.org/scripts/source/aesthetic.py.html/)
+[anotify.py](https://weechat.org/scripts/source/anotify.py.html/)
+[auto\_away.py](https://weechat.org/scripts/source/auto_away.py.html/)
+[autosort.py](https://weechat.org/scripts/source/autosort.py.html/)
+[colorize\_nicks.py](https://weechat.org/scripts/source/colorize_nicks.py.html/)
+[grep.py](https://weechat.org/scripts/source/grep.py.html/)

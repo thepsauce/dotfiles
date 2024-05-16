@@ -1,13 +1,12 @@
 #!/bin/bash
 
-config_dirs="systemd/user i3 i3status fcitx5 lf"
+config_dirs="systemd/user i3 i3status fcitx5 lf tmux yazi weechat"
 
 mkdir -p $config_dirs
 
 for d in $config_dirs
 do
-	rm -r $d/*
-	cp -r $HOME/.config/$d/* $d/
+	rsync -a $HOME/.config/$d/ $d/
 done
 
 mkdir -p bin
@@ -18,7 +17,7 @@ cp ~/.vim/pack/other/start/awesome-vim-colorschemes/colors/jellybeans.vim vim/co
 mkdir -p neomutt
 cp ~/.config/neomutt/{neomuttrc,mailcap,keybindings,colors} neomutt/
 
-dots="screenrc gdbinit gvimrc vimrc zshrc bashrc XCompose xprofile Xresources gitconfig"
+dots="screenrc gdbinit gvimrc vimrc zshrc bashrc XCompose xprofile Xresources gitconfig blerc xinitrc"
 for d in $dots
 do
 	cp -r $HOME/.$d $d
