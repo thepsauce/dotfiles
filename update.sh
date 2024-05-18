@@ -32,3 +32,6 @@ cp ~/.config/picom.conf picom.conf
 cp /etc/fonts/conf.d/* fontconfig/
 
 pacman -Qqe > package-list.txt
+
+rm -f weechat/sec.conf
+rm -rf tmux/plugins

@@ -112,7 +112,7 @@ command! -nargs=* Build :call BuildProject(<q-args>)
 function! BuildProject(args)
 	let cmd = "./build.sh"
 	let error_file = "/tmp/error_file.txt"
-	execute "!" . l:cmd . " -fdiagnostics-plain-output -o " . l:error_file . " " . a:args
+	execute "!" . l:cmd . " -fdiagnostics-plain-output " . a:args . "2>" .l:error_file
 	if filereadable(l:error_file)
 		execute "cfile " . l:error_file
 	endif
@@ -134,3 +134,6 @@ endif
 
 nnoremap ; :
 
+" Persistent undo
+set undodir=$HOME/.vim/undo
+set undofile

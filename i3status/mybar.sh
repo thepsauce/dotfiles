@@ -263,7 +263,7 @@ do
 	else
 		$((delta_time++))
 	fi
-	sleep 0.2
+	sleep 0.1
 done
 
 #pid="$!"

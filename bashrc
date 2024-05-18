@@ -100,7 +100,10 @@ ci() {
 export CPATH="/usr/include/freetype2"
 
 export HISTCONTROL="erasedups:ignorespace"
-export HISTSIZE=20000
+# ALL SHALL BE SAVED
+# There is a systemd service that optimizes the bash
+# history every shutdown
+export HISTSIZE=100000
 
 export HISTTIMEFORMAT="%F %T "
 #history -r $HOME/.bash_favorite_history

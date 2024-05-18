@@ -157,6 +157,7 @@ musescore
 mutt
 nano
 nasm
+ncdu
 neomutt
 net-tools
 networkmanager
@@ -234,6 +235,7 @@ qalculate-qt
 qemu-base
 qemu-full
 qjackctl
+qrencode
 qsynth
 qt5ct
 qt6-multimedia
@@ -264,6 +266,7 @@ shotcut
 shuffle
 skk-jisyo
 slop
+socat
 speedtest-cli
 steam
 step
@@ -367,6 +370,7 @@ vulkan-radeon
 vulkan-tools
 vulkan-validation-layers
 w3m
+websocat
 weechat
 weechat-matrix
 wget

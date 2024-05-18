@@ -1,8 +1,23 @@
 #!/bin/bash
 
+tmp=$(mktemp)
+file="$HOME/.bash_history"
+
 # double reverse with tac to keep command recency
-tac ~/.bash_history | awk '!x[$0]++' | tac > /tmp/hist
+tac $file | awk '!x[$0]++' | tac > $tmp
 
-mv -f /tmp/hist ~/.bash_history
+# time stamps are enable, remove lines starting with '#' but
+# keep the last of a sequence
+cat $tmp | awk '{
+    if ($0 ~ /^#/) {
+        hash_line = $0
+    } else {
+        if (hash_line != "") {
+            print hash_line
+        }
+        print
+        hash_line = ""
+    }
+}' > $file
 
-rm -f /tmp/hist
+rm -f $tmp

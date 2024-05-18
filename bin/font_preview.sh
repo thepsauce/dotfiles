@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files=$(ls /usr/share/kbd/consolefonts)
+files=$(\ls /usr/share/kbd/consolefonts)
 
 for f in $files
 do
