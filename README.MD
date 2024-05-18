@@ -2,7 +2,7 @@
 
 # Vim
 
-## Vim plugins:
+## Vim plugins
 
 [awesome-vim-colorschemes](https://github.com/rafi/awesome-vim-colorschemes) Bunch of color themes, jellybean is best.
 
@@ -16,7 +16,9 @@
 
 [taglist](https://github.com/vim-scripts/taglist.vim) Very useful to show overview of code.
 
-[undotree](vim-airline) Beautiful status bar.
+[undotree](https://github.com/mbbill/undotree) Neat visualizer/navigator for the undo tree.
+
+[vim-airline](https://github.com/vim-airline/vim-airline) Beautiful status bar.
 
 [vim-colors-meh](https://github.com/davidosomething/vim-colors-meh) Interesting color theme.
 
