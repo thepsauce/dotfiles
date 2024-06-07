@@ -731,21 +731,3 @@ delf s:grey_color
 delf s:grey_level
 delf s:grey_number
 " }}}
-
-" MY EXTRA STUFF
-hi Function	cterm=bold		gui=bold
-hi LineNr	ctermbg=234					guibg=#1c1c1c
-hi Normal	ctermfg=189	ctermbg=235	guifg=#d7d7d7	guibg=#262626
-hi cAfter	ctermfg=223					guifg=#d7d7af
-hi cOperator	ctermfg=180					guifg=#afd7d7
-hi cDelimiter	ctermfg=186					guifg=#d7d7d7
-hi cMember	ctermfg=79					guifg=#87afaf
-hi Terminal guibg=#1c1c1c ctermbg=235
-hi! link Conceal cOperator
-hi! link cFunction Function
-
-let g:terminal_ansi_colors = [
-	\'#282828', '#CC241D', '#98971A', '#D79921',
-	\'#458588', '#B16286', '#689D6A', '#D65D0E',
-	\'#fb4934', '#b8bb26', '#fabd2f', '#83a598',
-	\'#d3869b', '#8ec07c', '#fe8019', '#FBF1C7' ]

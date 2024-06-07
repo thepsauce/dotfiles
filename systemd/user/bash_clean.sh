@@ -6,7 +6,7 @@ file="$HOME/.bash_history"
 # double reverse with tac to keep command recency
 tac $file | awk '!x[$0]++' | tac > $tmp
 
-# time stamps are enable, remove lines starting with '#' but
+# time stamps are enabled, remove lines starting with '#' but
 # keep the last of a sequence
 cat $tmp | awk '{
     if ($0 ~ /^#/) {

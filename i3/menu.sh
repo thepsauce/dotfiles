@@ -15,7 +15,9 @@ entries=(
 	"Steam,/usr/bin/steam -debug_steamapi -console"
 	"Terminal,/usr/bin/alacritty"
 	"Thunderbird,/usr/bin/thunderbird"
+	"VirtualBox,/usr/bin/virtualbox"
 	"Vlc,/usr/bin/vlc"
+	"Write Stylus,/usr/bin/write_stylus"
 	"Youtube Music,/usr/bin/youtube-music"
 )
 
@@ -23,9 +25,9 @@ IFS=$'\n' sorted=($(sort <<<"${entries[*]}"))
 
 items=
 
-for i in ${!entries[@]}
+for i in "${!entries[@]}"
 do
-	e=${entries[$i]}
+	e="${entries[$i]}"
 	if [ $i -gt 0 ]
 	then
 		items="$items"'\n'
@@ -33,11 +35,10 @@ do
 	items="$items${e%%,*}"
 done
 
-result=$(echo -e "$items" | dmenu -i -l 20 -p Launch -nb "#000016" -nf "#857810" -sf "#ecd200" -sb "#363a59")
+result=$(echo -e "$items" | dmenu -fn Pixy -i -l 20 -p Launch -nb "#000016" -nf "#857810" -sf "#ecd200" -sb "#363a59")
 
-for i in ${!entries[@]}
+for e in "${entries[@]}"
 do
-	e=${entries[$i]}
 	if [ "$result" = "${e%%,*}" ]
 	then
 		eval ${e#*,}

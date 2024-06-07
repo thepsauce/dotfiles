@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -44,7 +46,7 @@ alias alacritty='WINIT_X11_SCALE_FACTOR=1 alacritty'
 alias play='mpv --no-audio-display --no-video'
 
 screen_cd() {
-    cd $@
+    cd "$@"
     if [ -n "$STY" ]
     then
         screen -X chdir "$(pwd)"
@@ -74,7 +76,7 @@ bind '"\t": menu-complete'
 # additional functions #
 ########################
 mkcd() {
-    mkdir $@ && cd "$_"
+    mkdir "$@" && cd "$_"
 }
 
 y() {
@@ -88,10 +90,11 @@ y() {
 
 # clipboard copy with mime type
 ci() {
-    file="$1"
-    shift
-    mime_type=$(file -Lb --mime-type -- "$file")
-    xclip -selection clipboard -t $mime_type "$file" $@
+    if [ $# -ne 1 ]
+    then
+        return
+    fi
+    printf "file://%s\r\n" "$(realpath "$1")" | xclip -selection clipboard -t text/uri-list
 }
 
 #############
@@ -102,7 +105,7 @@ export CPATH="/usr/include/freetype2"
 export HISTCONTROL="erasedups:ignorespace"
 # ALL SHALL BE SAVED
 # There is a systemd service that optimizes the bash
-# history every shutdown
+# history every shutdown (removing duplicates)
 export HISTSIZE=100000
 
 export HISTTIMEFORMAT="%F %T "
@@ -112,13 +115,18 @@ export VISUAL=vim
 export GIT_EDITOR="$VISUAL"
 export EDITOR="$VISUAL"
 
-export TERMINAL=$TERM
+export TERMINAL=alacritty
 
 #######################
 # command line string #
 #######################
-git_ps1=$(git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /)
-PS1="\n\[\e[1;37m\]<<< \[\e[1;34m\]\u\[\e[0;39m\]@\[\e[1;93m\]\h\[\e[0;94m\]:\[\e[1;93m\]\w\[\e[0;39m\]\[\e[1;35m\] $git_ps1\[\e[0;39m\]\[\e[1;37m\]>>>\[\e[0;39m\]\n\$ "
+# <<< <user>@<host>:<full directory> <git branch> >>>
+# $
+# Example:
+# <<< fairy@linuxpc:~/dotfiles * dotfiles >>>
+# $
+GIT_PS1="\$(git branch 2>/dev/null | grep -e '^\\*' | sed 's/\\* .\\+/\\\\0 /')"
+export PS1="\n\[\e[1;37m\]<<< \[\e[1;34m\]\u\[\e[0;39m\]@\[\e[1;93m\]\h\[\e[0;94m\]:\[\e[1;93m\]\w\[\e[0;39m\]\[\e[1;35m\] $GIT_PS1\[\e[0;39m\]\[\e[1;37m\]>>>\[\e[0;39m\]\n\$ "
 
 #########
 # setup #
@@ -149,7 +157,7 @@ function __zoxide_z() {
     else
         local result
         # shellcheck disable=SC2312
-        result="$(\command zoxide query --exclude `__zoxide_pwd` -- $@)" &&
+        result="$(\command zoxide query --exclude "$(__zoxide_pwd)" -- "$@")" &&
             __zoxide_cd "${result}"
     fi
 }
@@ -160,9 +168,13 @@ source /usr/share/doc/pkgfile/command-not-found.bash
 
 [[ ${BLE_VERSION-} ]] && ble-attach
 
-# start tmux automatically in the first tty
+# start tmux/x11 automatically in the first tty
 WHO="$(who am i | awk '{print $2}')"
 if [ "$WHO" = "tty1" ]
 then
-    tmux
+    if ! tmux has-session -t 'default'
+    then
+        tmux new -s 'default' -d 'neomutt' \; split-window -v 'weechat'
+    fi
+    startx
 fi

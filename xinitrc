@@ -41,12 +41,11 @@ services="appointment.service appointment.timer screenshotter.timer screenshotte
 
 for s in $services
 do
-	systemctl --user start $s
+	systemctl --user start "$s"
 done
 
-xrandr --output DVI-D-0 --left-of HDMI-A-0
-xrandr --output HDMI-A-0 --primary
+randfix.sh
 xset r rate 200 50
-unclutter -idle 4 &
+unclutter -idle 4 -jitter 3 -exclude-root -ignore-scrolling &
 /usr/local/bin/tracker.sh &
 exec i3

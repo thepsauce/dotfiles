@@ -1,0 +1,5 @@
+[manager]
+
+prepend_keymap = [
+    { on = [ "[" ], run = "plugin tag", desc = "add tags" },
+]

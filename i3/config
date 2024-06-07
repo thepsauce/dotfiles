@@ -1,5 +1,20 @@
 set $mod Mod4
+set $mkey Super_L
+set $mon1 HDMI-A-0
+set $mon2 DVI-D-0
 
+set $ws1 "1:1"
+set $ws2 "2:"
+set $ws3 "3: "
+set $ws4 "4:4"
+set $ws5 "5:5"
+set $ws6 "6:6"
+set $ws7 "7:7"
+set $ws8 "8:8"
+set $ws9 "9:9"
+set $ws10 "10:10"
+
+#font pango: monospace 0
 font pango: Pixy
 
 # i3lock has a weird bug where typing the valid password won't unlock it
@@ -26,10 +41,6 @@ bindsym --release $mod+F12 exec --no-startup-id screencast.sh -i -r Screenshots
 bindsym --release $mod+F11 exec --no-startup-id screencast.sh -r Screenshots
 bindsym --release $mod+Shift+F11 exec --no-startup-id pkill ffmpeg
 
-bindsym $mod+n exec --no-startup-id ~/.config/i3/toggle_terminal.sh
-
-bindsym $mod+Tab exec --no-startup-id ~/.config/i3/switch_layout.sh
-
 # move to the workspace with the highest number
 bindsym $mod+u exec i3-msg "workspace number $(i3-msg -t get_workspaces | jq '.[] | .num' | sort -n | tail -n 1)"
 # create a workspace with a number higher than any of the others
@@ -44,103 +55,114 @@ bindsym $mod+y workspace next
 bindsym $mod+w mode "rename"
 
 mode "rename" {
-	bindsym 1 rename workspace to 1, mode "default"
-	bindsym 2 rename workspace to 2, mode "default"
-	bindsym 3 rename workspace to 3, mode "default"
-	bindsym 4 rename workspace to 4, mode "default"
-	bindsym 5 rename workspace to 5, mode "default"
-	bindsym 6 rename workspace to 6, mode "default"
-	bindsym 7 rename workspace to 7, mode "default"
-	bindsym 8 rename workspace to 8, mode "default"
-	bindsym 9 rename workspace to 9, mode "default"
-	bindsym 0 rename workspace to 10, mode "default"
-	bindsym Shift+1 rename workspace to 11, mode "default"
-	bindsym Shift+2 rename workspace to 12, mode "default"
-	bindsym Shift+3 rename workspace to 13, mode "default"
-	bindsym Shift+4 rename workspace to 14, mode "default"
-	bindsym Shift+5 rename workspace to 15, mode "default"
-	bindsym Shift+6 rename workspace to 16, mode "default"
-	bindsym Shift+7 rename workspace to 17, mode "default"
-	bindsym Shift+8 rename workspace to 18, mode "default"
-	bindsym Shift+9 rename workspace to 19, mode "default"
-	bindsym Shift+0 rename workspace to 20, mode "default"
+    bindsym 1 rename workspace to $ws1, mode "default"
+    bindsym 2 rename workspace to $ws2, mode "default"
+    bindsym 3 rename workspace to $ws3, mode "default"
+    bindsym 4 rename workspace to $ws4, mode "default"
+    bindsym 5 rename workspace to $ws5, mode "default"
+    bindsym 6 rename workspace to $ws6, mode "default"
+    bindsym 7 rename workspace to $ws7, mode "default"
+    bindsym 8 rename workspace to $ws8, mode "default"
+    bindsym 9 rename workspace to $ws9, mode "default"
+    bindsym 0 rename workspace to $ws10, mode "default"
+    bindsym Shift+1 rename workspace to 11, mode "default"
+    bindsym Shift+2 rename workspace to 12, mode "default"
+    bindsym Shift+3 rename workspace to 13, mode "default"
+    bindsym Shift+4 rename workspace to 14, mode "default"
+    bindsym Shift+5 rename workspace to 15, mode "default"
+    bindsym Shift+6 rename workspace to 16, mode "default"
+    bindsym Shift+7 rename workspace to 17, mode "default"
+    bindsym Shift+8 rename workspace to 18, mode "default"
+    bindsym Shift+9 rename workspace to 19, mode "default"
+    bindsym Shift+0 rename workspace to 20, mode "default"
 
-	bindsym n exec i3-input -F 'rename workspace to "%s"' -P 'New name: ', mode "default"
+    bindsym n exec i3-input -F 'rename workspace to "%s"' -P 'New name: ', mode "default"
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Escape mode "default"
+    bindsym $mkey mode "default"
 }
 
 bindsym $mod+g mode "gaps"
 
 mode "gaps" {
-	bindsym p mode "move"
-	bindsym r mode "resize"
+    bindsym p mode "move"
+    bindsym r mode "resize"
 
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mkey mode "default"
 }
 
 bindsym $mod+p mode "move"
 
 mode "move" {
-	bindsym g mode "gaps"
-	bindsym r mode "resize"
+    bindsym g mode "gaps"
+    bindsym r mode "resize"
 
-	bindsym h move left 20px
-	bindsym j move down 20px
-	bindsym k move up 20px
-	bindsym l move right 20px
+    bindsym h move left 20px
+    bindsym j move down 20px
+    bindsym k move up 20px
+    bindsym l move right 20px
 
-	bindsym Shift+h move left 5px
-	bindsym Shift+j move down 5px
-	bindsym Shift+k move up 5px
-	bindsym Shift+l move right 5px
+    bindsym Shift+h move left 5px
+    bindsym Shift+j move down 5px
+    bindsym Shift+k move up 5px
+    bindsym Shift+l move right 5px
 
-	bindsym Control+h move left 50px
-	bindsym Control+j move down 50px
-	bindsym Control+k move up 50px
-	bindsym Control+l move right 50px
+    bindsym Control+h move left 50px
+    bindsym Control+j move down 50px
+    bindsym Control+k move up 50px
+    bindsym Control+l move right 50px
 
-	bindsym Escape mode "default"
-	bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mkey mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 mode "resize" {
-	bindsym g mode "gaps"
-	bindsym p mode "move"
+    bindsym g mode "gaps"
+    bindsym p mode "move"
 
-	bindsym l resize grow width 20px
-	bindsym j resize shrink height 20px
-	bindsym k resize grow height 20px
-	bindsym h resize shrink width 20px
+    bindsym l resize grow right 20px
+    bindsym j resize grow down 20px
+    bindsym k resize grow up 20px
+    bindsym h resize grow left 20px
 
-	bindsym Shift+l resize grow width 5px
-	bindsym Shift+j resize shrink height 5px
-	bindsym Shift+k resize grow height 5px
-	bindsym Shift+h resize shrink width 5px
+    bindsym Shift+l resize shrink left 20px
+    bindsym Shift+j resize shrink up 20px
+    bindsym Shift+k resize shrink down 20px
+    bindsym Shift+h resize shrink right 20px
 
-	bindsym Control+l resize grow width 50px
-	bindsym Control+j resize shrink height 50px
-	bindsym Control+k resize grow height 50px
-	bindsym Control+h resize shrink width 50px
+    bindsym Control+l resize grow right 80px
+    bindsym Control+j resize grow down 80px
+    bindsym Control+k resize grow up 80px
+    bindsym Control+h resize grow left 80px
 
-	bindsym Escape mode "default"
-	bindsym Return mode "default"
+    bindsym Control+Shift+l resize shrink left 80px
+    bindsym Control+Shift+j resize shrink up 80px
+    bindsym Control+Shift+k resize shrink down 80px
+    bindsym Control+Shift+h resize shrink right 80px
+
+    bindsym Escape mode "default"
+    bindsym $mkey mode "default"
 }
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+
+#bindsym $mod+t sticky toggle
+
+# make workspace numbers compact
+bindsym $mod+Shift+b exec $HOME/.config/i3/comp.sh
 
 # use mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -149,31 +171,39 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
+bindsym $mod+n exec --no-startup-id ~/.config/i3/toggle_terminal.sh
+
+bindsym $mod+Tab exec --no-startup-id ~/.config/i3/switch_layout.sh
+
+bindsym $mod+o exec firefox
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec gvim
-bindsym $mod+F2 exec qutebrowser
+bindsym $mod+F1 exec alacritty
+bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec discord
 bindsym $mod+F4 exec ~/.config/i3status/calendar.sh
 
 # bind program to workspace
-assign [class="(?i)youtube music"] 3
+assign [class="(?i)youtube music"] $ws2
 assign [class=(?i)krita] 8
+assign [class=(?i)discord ] $ws3
+assign [class=(?i)firefox ] $ws2
 
+for_window [class=firefox instance=Navigator] focus
+for_window [class=firefox instance=Toolkit] sticky enable
 for_window [class=Alacritty instance=scratchpad] , move scratchpad
-
 for_window [class=Alacritty instance=popup] floating enable
-
 for_window [class=Alacritty instance=TogglingTerminal] \
-	floating enable, \
-	sticky enable, \
-	resize set 1920 px 540 px, \
-	move position center, \
-	move up 281 px
+    floating enable, \
+    sticky enable, \
+    resize set 1920 px 540 px, \
+    move position center, \
+    move up 281 px
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
-new_window pixel 1
+default_border pixel 2
 
 focus_wrapping no
 
@@ -199,13 +229,11 @@ bindsym $mod+v split horizontal
 # split in vertical orientation
 bindsym $mod+s split vertical
 
+# toggle between split and tabbed
+bindsym $mod+t layout toggle tabbed split
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -213,35 +241,43 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# toggle the border
+bindsym $mod+b border toggle
+
 # focus the parent container
 bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+d focus child
 
+workspace $ws1 output $mon1
+workspace $ws2 output $mon2
+workspace $ws3 output $mon2
+workspace $ws10 output $mon1
+
 # switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -250,30 +286,35 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #ecd200 #ecd200 #ffffff #2e9ef4   #837711
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+# class                  border  backgr. text  indicator child_border
+
+#client.focused          #ecd200 #ecd200 #000016 #ecd200 #ecd200
+client.focused          #9b8a00 #000016 #ecd200 #ecd200 #ecd200
+client.focused_inactive #333333 #222222 #9b8a00 #484e50 #5f676a
+client.unfocused        #333333 #4d5459 #90949e #292d2e #222222
+client.urgent           #2f343a #900000 #ffffff #900000 #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
 
 client.background       #ffffff
 
 #d7eabe
 #goodbye old friend :( (SOON)
 bar {
-	colors {
-		background #000016
-		statusline #ecd200
-		separator #9b8a00
+    strip_workspace_numbers yes
+    colors {
+        background #000016
+        statusline #ecd200
+        separator #9b8a00
 
-		focused_workspace  #ecd200 #000024 #ecd200
-		active_workspace   #333333 #5f676a #ffffff
-		inactive_workspace #333333 #222222 #888888
-		urgent_workspace   #2f343a #900000 #ffffff
-	}
-	position top
-	status_command exec $HOME/.config/i3status/mybar.sh
+        #                  outline backgr.  text
+        focused_workspace  #ecd200 #ecd200 #000016
+        active_workspace   #333333 #222222 #9b8a00
+        inactive_workspace #333333 #4d5459 #90949e
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+    font pango: Pixy
+    position top
+    status_command exec $HOME/.config/i3status/mybar.sh
 }
 
 # On startup
@@ -282,9 +323,8 @@ bar {
 exec --no-startup-id picom
 exec --no-startup-id tracker.sh
 # set wallpaper
-exec --no-startup-id feh --bg-fill $HOME/Pictures/background.jpg
+exec --no-startup-id feh --bg-fill $HOME/ext2/Pictures/background
 # input manager
 exec --no-startup-id fcitx5
 # mail (opens in scratchpad)
-exec --no-startup-id alacritty --class Alacritty,scratchpad -e tmux attach
-
+exec --no-startup-id alacritty --class Alacritty,scratchpad -e tmux attach -t "default"

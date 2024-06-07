@@ -1,26 +1,31 @@
 #!/bin/bash
 
-WINID=$(xdotool search --classname TogglingTerminal)
+set -o xtrace
 
-NUM=wc -w <<< $WINID
+WINIDS=$(xdotool search --classname TogglingTerminal)
+
+NUM=$(wc -w <<< $WINIDS)
 
 if [ $NUM -gt 1 ]
 then
 	FIRST=true
-	for id in $WINID
+	for id in $WINIDS
 	do
 		if $FIRST
 		then
 			FIRST=false
+			WINID=$id
 			continue
 		fi
 		xdotool windowkill $id
 	done
+else
+    WINID=$WINIDS
 fi
 
 if [ -z $WINID ]
 then
-	alacritty --class Alacritty,TogglingTerminal -e screen &
+	alacritty --class Alacritty,TogglingTerminal &
 
 	while [ -z "$WINID" ]
 	do
