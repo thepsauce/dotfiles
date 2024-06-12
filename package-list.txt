@@ -48,6 +48,8 @@ dpkg
 dunst
 dxvk-bin
 efibootmgr
+element
+element-desktop
 elixir
 enchant
 extundelete
@@ -93,6 +95,7 @@ hunspell
 i3-wm
 i3lock
 i3status
+iamb
 icoutils
 ifuse
 imagemagick

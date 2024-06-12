@@ -201,7 +201,7 @@ flow_length=32
 flow_size=
 flow_delta=0
 flow_done=true
-anticipation=11
+anticipation=40
 exhaust_time=0
 delta_time=$((anticipation + anticipation))
 
@@ -212,12 +212,12 @@ echo '{"version":1,"click_events":true}[[]'
 
 while :
 do
-	if [ $delta_time -gt $((anticipation + flow_delta + anticipation)) ] && read -u 7 -t 0.001 flow_text
+	if [ $delta_time -gt $((anticipation + flow_delta + anticipation)) ] && read -u 7 -t 0.01 flow_text
 	then
 		cur_time=$(date +"%s")
 		if [ $((time_last_message + 100)) -lt $cur_time ]
 		then
-			exhaust_time=14
+			exhaust_time=60
 		fi
 		time_last_message=$cur_time
 
