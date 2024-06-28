@@ -1,4 +1,3 @@
-activity-log-manager
 adobe-source-han-sans-jp-fonts
 adobe-source-han-serif-jp-fonts
 alacritty
@@ -8,6 +7,7 @@ alsa-utils
 android-file-transfer
 anthy
 arandr
+arduino-cli
 artikulate
 asciidoc
 aseprite
@@ -69,6 +69,7 @@ ffmpegthumbnailer
 fim
 firefox
 fontforge
+freecad
 freetube
 freetype2-demos
 fwupd
@@ -92,6 +93,7 @@ hexedit
 highlight
 htop
 hunspell
+i3-resurrect
 i3-wm
 i3lock
 i3status
@@ -153,6 +155,7 @@ marble
 mecab
 mecab-ipadic
 mecab-ipadic-neologd-git
+meson
 microsoft-office-appimage
 minuet
 moc-pulse
@@ -203,6 +206,7 @@ pdfjs
 picom
 pkgfile
 polybar
+ponysay
 poppler-glib
 protontricks
 psensor
@@ -464,7 +468,6 @@ yazi
 youtube-music
 yt-dlp
 zathura
-zeitgeist-explorer
 zip
 zoxide
 zsh

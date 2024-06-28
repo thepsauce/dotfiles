@@ -3,7 +3,6 @@ set confirm off
 set history save on
 set history filename ~/.gdb_history
 set history remove-duplicates 1
-set auto-complete on
 define asm
   layout asm
   layout reg

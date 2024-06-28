@@ -3,7 +3,7 @@ Description=Takes a screenshot every half hour
 
 [Timer]
 OnBootSec=5min
-OnUnitActiveSec=30min
+OnUnitActiveSec=1min
 
 [Install]
 WantedBy=timers.target

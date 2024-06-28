@@ -177,10 +177,11 @@ bindsym $mod+Tab exec --no-startup-id ~/.config/i3/switch_layout.sh
 
 bindsym $mod+o exec firefox --new-tab --url about:newtab
 bindsym $mod+Shift+o exec firefox
+bindsym $mod+semicolon exec i3-input -F 'exec firefox --search "%s" --class=Search' -P 'Search:'
 bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+Return exec gvim, layout tabbed
+bindsym $mod+Shift+Return exec gvim
 bindsym $mod+F1 exec alacritty
-bindsym $mod+F2 exec firefox
+bindsym $mod+F2 workspace --no-auto-back-and-forth $ws2, exec firefox, layout tabbed
 bindsym $mod+F3 exec discord, layout tabbed, exec element-desktop
 bindsym $mod+F4 exec ~/.config/i3status/calendar.sh
 
@@ -189,11 +190,13 @@ assign [class="(?i)youtube music"] $ws2
 assign [class=(?i)krita] 8
 assign [class=(?i)discord] $ws3
 assign [class=(?i)element] $ws3
-assign [class=(?i)firefox] $ws2
+#assign [class=(?i)firefox instance=Navigator] $ws2
 
-for_window [class=(?i)firefox] layout tabbed
 for_window [class=(?i)element] layout tabbed
 for_window [class=(?i)discord] layout tabbed
+for_window [class=(?i)gvim] layout tabbed
+for_window [class=(?i)search] floating enable
+for_window [instance=(?i)search] floating enable
 for_window [class=(?i)firefox instance=Navigator] focus
 for_window [class=(?i)firefox instance=Toolkit] sticky enable
 for_window [class=(?i)alacritty instance=scratchpad] , move scratchpad
@@ -203,7 +206,7 @@ for_window [class=(?i)alacritty instance=TogglingTerminal] \
     sticky enable, \
     resize set 1920 px 540 px, \
     move position center, \
-    move up 281 px
+    move up 258 px
 
 # kill focused window
 bindsym $mod+q kill
@@ -254,6 +257,7 @@ bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 workspace $ws1 output $mon1
 workspace $ws2 output $mon2
@@ -319,16 +323,17 @@ bar {
     }
     font pango: Pixy
     position top
-    status_command exec $HOME/.config/i3status/mybar.sh
+    status_command exec "$HOME/.config/i3status/mybar.sh"
 }
 
 # On startup
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec --no-startup-id picom
+#exec --no-startup-id picom
 exec --no-startup-id tracker.sh
+exec --no-startup-id "$HOME/Coding/window-tracker/build/tracker --output \"$HOME/.tracks\""
 # set wallpaper
-exec --no-startup-id feh --bg-fill $HOME/ext2/Pictures/background
+#exec --no-startup-id "feh --bg-fill \"$HOME/ext2/Pictures/background\""
 # input manager
 exec --no-startup-id fcitx5
 # mail (opens in scratchpad)

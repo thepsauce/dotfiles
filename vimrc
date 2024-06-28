@@ -90,7 +90,8 @@ hi cAfter       ctermfg=223                 guifg=#d7d7af
 hi cOperator    ctermfg=180                 guifg=#afd7d7
 hi cDelimiter   ctermfg=186                 guifg=#d7d7d7
 hi cMember      ctermfg=79                  guifg=#87afaf
-hi Terminal     guibg=#1c1c1c ctermbg=235
+hi! link Terminal Normal
+"guibg=#1c1c1c ctermbg=235
 hi! link Conceal cOperator
 hi! link cFunction Function
 
@@ -155,4 +156,17 @@ if empty($DISPLAY)
     hi! link Conceal Operator
 endif
 
+" Automatic header guard for .h files
+function InsertHeaderGuard()
+    let name = toupper(expand('%:t:r')) .. "_H"
+    let guard = [ "#ifndef " .. name, "#define " .. name, "", "", "#endif" ]
+    call append(0, guard)
+    call cursor(3, 1)
+    start
+endfunction
+
+au BufNewFile *.h call InsertHeaderGuard()
+
 nnoremap ; :
+
+let g:python_highlight_all = 1

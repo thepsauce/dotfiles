@@ -3,7 +3,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-source /usr/share/blesh/ble.sh --noattach
+#source /usr/share/blesh/ble.sh --noattach
 
 ###########
 # options #
@@ -46,7 +46,7 @@ alias alacritty='WINIT_X11_SCALE_FACTOR=1 alacritty'
 alias play='mpv --no-audio-display --no-video'
 
 screen_cd() {
-    cd "$@"
+    cd "$@" || return
     if [ -n "$STY" ]
     then
         screen -X chdir "$(pwd)"
@@ -80,7 +80,8 @@ mkcd() {
 }
 
 y() {
-    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    local tmp
+    tmp="$(mktemp -t "yazi-cwd.XXXXXX")" || return
     yazi "$@" --cwd-file="$tmp"
     if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
         cd -- "$cwd"
@@ -110,6 +111,7 @@ export HISTSIZE=100000
 
 export HISTTIMEFORMAT="%F %T "
 #history -r $HOME/.bash_favorite_history
+#export PROMPT_COMMAND="history -a; history -c history -r; $PROMPT_COMMAND"
 
 export VISUAL=vim
 export GIT_EDITOR="$VISUAL"
@@ -120,7 +122,7 @@ export TERMINAL=alacritty
 #######################
 # command line string #
 #######################
-# <<< <user>@<host>:<full directory> <git branch> >>>
+# <<< <user>@<host>:<directory path> <git branch> >>>
 # $
 # Example:
 # <<< fairy@linuxpc:~/dotfiles * dotfiles >>>
@@ -132,6 +134,8 @@ export PS1="\n\[\e[1;37m\]<<< \[\e[1;34m\]\u\[\e[0;39m\]@\[\e[1;93m\]\h\[\e[0;94
 # setup #
 #########
 eval "$(zoxide init bash --cmd cd)"
+
+alias cd..='cd ..'
 
 # hacky workaround to make autocd work correctly
 function __zoxide_z() {
@@ -164,17 +168,47 @@ function __zoxide_z() {
 
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
-source /usr/share/doc/pkgfile/command-not-found.bash
 
-[[ ${BLE_VERSION-} ]] && ble-attach
+# print repository this package is contained in
+#repo_of()
+#{
+#    local cmd=$1
+#    local pkgs
+#    local FUNCNEST=10
+#    set +o verbose
+#    mapfile -t pkgs < <(pkgfile -b -- "$cmd" 2>/dev/null)
+#    if [ ${#pkgs[@]} -gt 0 ]; then
+#        echo "$cmd may be found in the following packages:"
+#        IFS=$'\n'
+#        echo "${pkgs[*]}"
+#    else
+#        echo "bash: $cmd: command not found"
+#    fi 1>&2
+#    return 127
+#}
+
+cur="$(tty)"
+
+# only show the pony and move the cursor to line 32 for large enough terminals
+if [ ! "$cur" = "/dev/tty1" ] && [ "$(tput lines)" -gt 50 ] ; then
+    ponysay -q 2>/dev/null
+    case "$cur" in
+    "/dev/tty"*) ;;
+    *)
+        IFS='[;' read -p $'\e[6n' -d R -rs _ line _ _
+        [ "$line" -lt 32 ] && tput cup 32 0
+        ;;
+    esac
+fi
+
+#[[ ${BLE_VERSION-} ]] && ble-attach
 
 # start tmux/x11 automatically in the first tty
-WHO="$(who am i | awk '{print $2}')"
-if [ "$WHO" = "tty1" ]
-then
-    if ! tmux has-session -t 'default'
+if [ "$cur" = "/dev/tty1" ] ; then
+    if ! tmux has-session -t 'default' 2>/dev/null
     then
         tmux new -s 'default' -d 'neomutt' \; split-window -v 'weechat'
     fi
     startx
 fi
+
