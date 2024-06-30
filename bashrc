@@ -8,8 +8,6 @@
 ###########
 # options #
 ###########
-set -o vi
-
 shopt -s checkwinsize
 shopt -s autocd
 
@@ -63,14 +61,6 @@ alias lf=lf_cd
 
 # clipboard copy
 alias c="xclip -selection clipboard"
-
-#########
-# binds #
-#########
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-
-bind '"\t": menu-complete'
 
 ########################
 # additional functions #
