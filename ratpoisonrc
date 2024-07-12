@@ -1,0 +1,87 @@
+# Font
+set font Pixy
+
+# Size of input history (default 20)
+set historysize 512
+
+# Max undo command steps (default 20)
+set maxundos 128
+
+# I know, thank you
+set startupmessage 0
+
+# Color of ratpoison windows
+set fgcolor black
+set bgcolor white
+
+# Border of windows
+set border 0
+set fwcolor yellow
+set bwcolor black
+
+# Escape
+escape s-space
+
+# Terminal
+definekey top s-Return exec alacritty
+
+# Firefox
+bind f exec firefox
+
+# dmenu
+bind m exec menu.sh
+
+# Colon
+definekey top s-semicolon colon
+
+# Split
+definekey top s-v hsplit
+definekey top s-s vsplit
+
+definekey top s-r remove
+definekey top s-q kill
+
+# Exchange
+bind h exchangeleft
+bind j exchangedown
+bind k exchangeup
+bind l exchangeright
+
+# Select
+definekey top s-f fselect
+
+definekey top s-1 select 1
+definekey top s-2 select 2
+definekey top s-3 select 3
+definekey top s-4 select 4
+definekey top s-5 select 5
+definekey top s-6 select 6
+definekey top s-7 select 7
+definekey top s-8 select 8
+definekey top s-9 select 9
+definekey top s-0 select 10
+
+# Movement
+definekey top s-h focusleft
+definekey top s-j focusdown
+definekey top s-k focusup
+definekey top s-l focusright
+
+# Use pactl to adjust volume in PulseAudio.
+definekey top XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% ; exec ratpoison_volume.sh
+definekey top XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% ; exec ratpoison_volume.sh
+definekey top C-XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +15% ; exec ratpoison_volume.sh
+definekey top C-XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -15% ; exec ratpoison_volume.sh
+definekey top S-XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% ; exec ratpoison_volume.sh
+definekey top S-XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% ; exec ratpoison_volume.sh
+definekey top XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle ; exec ratpoison_volume.sh
+definekey top XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle ; exec ratpoison_volume.sh
+
+# Screenshots
+definekey top F12 exec screencast.sh -a -i -r Screenshots
+definekey top s-F12 exec screencast.sh -i -r Screenshots
+definekey top s-F11 exec screencast.sh -r Screenshots
+definekey top S-s-F11 exec pkill ffmpeg
+
+# Need this for some video games
+definekey top s-Tab exec ratpoison_switch_layout.sh

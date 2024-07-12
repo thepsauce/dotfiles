@@ -17,7 +17,7 @@ cp ~/.vim/pack/other/start/awesome-vim-colorschemes/colors/jellybeans.vim vim/co
 mkdir -p neomutt
 cp ~/.config/neomutt/{neomuttrc,mailcap,keybindings,colors} neomutt/
 
-dots="screenrc gdbinit gvimrc vimrc zshrc bashrc XCompose xprofile Xresources gitconfig blerc xinitrc inputrc"
+dots="screenrc gdbinit gvimrc vimrc zshrc bashrc XCompose xprofile Xresources gitconfig blerc xinitrc inputrc ratpoisonrc"
 for d in $dots
 do
 	cp -r $HOME/.$d $d

@@ -102,6 +102,7 @@ icoutils
 ifuse
 imagemagick
 inetutils
+inotify-tools
 intel-ucode
 intltool
 itstool
@@ -253,6 +254,7 @@ qt5ct
 qt6-multimedia
 qt6-svg
 qutebrowser
+ratpoison
 raylib
 razercfg
 remind

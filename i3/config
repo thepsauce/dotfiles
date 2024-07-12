@@ -21,7 +21,7 @@ font pango: Pixy
 #bindsym --release $mod+Shift+slash exec i3lock & systemctl suspend
 bindsym --release $mod+Shift+slash exec --no-startup-id systemctl suspend
 
-bindsym $mod+m exec ~/.config/i3/menu.sh
+bindsym $mod+m exec menu.sh
 
 smart_borders on
 smart_gaps on
@@ -330,11 +330,4 @@ bar {
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #exec --no-startup-id picom
-exec --no-startup-id tracker.sh
-exec --no-startup-id "$HOME/Coding/window-tracker/build/tracker --output \"$HOME/.tracks\""
-# set wallpaper
 #exec --no-startup-id "feh --bg-fill \"$HOME/ext2/Pictures/background\""
-# input manager
-exec --no-startup-id fcitx5
-# mail (opens in scratchpad)
-exec --no-startup-id alacritty --class Alacritty,scratchpad -e tmux attach -t "default"
