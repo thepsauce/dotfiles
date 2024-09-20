@@ -1,5 +1,5 @@
 unlet! skip_defaults_vim
-source $VIMRUNTIME/defaults.vim"
+source $VIMRUNTIME/defaults.vim
 
 " General
 filetype plugin on
@@ -23,8 +23,8 @@ set t_ut=
 
 " For my small laptop screen (this is also good for bigger screens actually
 " when you have lots of split windows)
-set winwidth=114
-set winheight=35
+"set winwidth=114
+"set winheight=35
 
 set mouse=a
 
@@ -51,6 +51,9 @@ endif
 "let &fillchars ..= ',eob: '
 
 " Airline
+"let g:airline_theme='deep_space'
+let g:airline_theme='violet'
+
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -71,7 +74,11 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 " Color theme
+set background=dark
+set termguicolors
+
 "colo fu
+
 " gruvbox
 let g:gruvbox_bold = '1'
 let g:gruvbox_italic = '1'
@@ -79,14 +86,22 @@ let g:gruvbox_underline = '1'
 let g:gruvbox_undercurl = '1'
 "colo gruvbox
 "hi! link Normal GruvboxRed
+
 "colo atom
-"colo corn
 "colo jellybeans
-set background=dark
-colo lunaperche
+"colo lunaperche
+"colo distinguished
+
+"let ayucolor="dark"
+"colo ayu
+
+colo zaibatsu
+
+hi vertsplit guifg=#2d3640
+set fillchars+=vert:│
 
 hi Function   ctermfg=111 "cterm=bold gui=bold
-hi Conceal    cterm=bold
+hi Operator   cterm=bold
 "hi LineNr     ctermbg=234                 guibg=#1c1c1c
 "hi Normal     ctermfg=189 ctermbg=235 guifg=#d7d7d7 guibg=#262626
 "hi cAfter     ctermfg=223                 guifg=#d7d7af
@@ -95,7 +110,7 @@ hi Conceal    cterm=bold
 "hi cMember    ctermfg=79                  guifg=#87afaf
 "hi! link Terminal Normal
 "guibg=#1c1c1c ctermbg=235
-hi! link Conceal cOperator
+hi! link Conceal Operator
 hi! link cFunction Function
 
 "let g:terminal_ansi_colors = [
@@ -139,7 +154,7 @@ command! -nargs=* Build :call BuildProject(<q-args>)
 function! BuildProject(args)
     let cmd = "build"
     let error_file = "/tmp/error_file.txt"
-    execute "!" . l:cmd . " -fdiagnostics-plain-output " . a:args . "2>" .l:error_file
+    execute "!" . l:cmd . " -fdiagnostics-plain-output " . a:args . "2>" . l:error_file
     if filereadable(l:error_file)
         execute "cfile " . l:error_file
     endif
@@ -164,12 +179,15 @@ function InsertHeaderGuard()
     let name = toupper(expand('%:t:r')) .. "_H"
     let guard = [ "#ifndef " .. name, "#define " .. name, "", "", "#endif" ]
     call append(0, guard)
-    call cursor(3, 1)
+    call cursor(4, 1)
+    redraw
     start
 endfunction
 
 au BufNewFile *.h call InsertHeaderGuard()
 
-nnoremap ; :
+au BufRead,BufNewFile *.h set ft=c
+
+"nnoremap ; :
 
 let g:python_highlight_all = 1

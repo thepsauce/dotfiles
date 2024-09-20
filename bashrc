@@ -18,11 +18,13 @@ shopt -s histappend
 ###########
 alias sudo="sudo "
 
+alias info="info --vi-keys"
+
 alias rm="rm -I"
 alias mv="mv -i"
 alias cp="cp -i"
 
-alias ls="eza --icons=automatic"
+alias ls="eza"
 alias ll="ls -l"
 alias la="ll -A"
 alias lt="ll -T"
@@ -41,26 +43,16 @@ alias vi="vim -c 'set laststatus=0'"
 
 alias alacritty='WINIT_X11_SCALE_FACTOR=1 alacritty'
 
-alias play='mpv --no-audio-display --no-video'
+alias play='vlc --novideo -I ncurses'
 
-screen_cd() {
-    cd "$@" || return
-    if [ -n "$STY" ]
-    then
-        screen -X chdir "$(pwd)"
-    fi
-}
+alias cd..='cd ..'
 
-alias cd=screen_cd
-
-lf_cd() {
-    cd "$(/home/steves/.config/lf/lf-wrapper.sh -print-last-dir "$@")"
-}
-
-alias lf=lf_cd
+alias pc=purec
 
 # clipboard copy
 alias c="xclip -selection clipboard"
+
+alias dl-song="yt-dlp -f bestaudio -x --audio-format flac --embed-thumbnail"
 
 ########################
 # additional functions #
@@ -83,6 +75,7 @@ y() {
 ci() {
     if [ $# -ne 1 ]
     then
+        echo "ci: supply only a single argument"
         return
     fi
     printf "file://%s\r\n" "$(realpath "$1")" | xclip -selection clipboard -t text/uri-list
@@ -103,7 +96,7 @@ export HISTTIMEFORMAT="%F %T "
 #history -r $HOME/.bash_favorite_history
 #export PROMPT_COMMAND="history -a; history -c history -r; $PROMPT_COMMAND"
 
-export VISUAL=vim
+export VISUAL=purec
 export GIT_EDITOR="$VISUAL"
 export EDITOR="$VISUAL"
 
@@ -114,48 +107,21 @@ export TERMINAL=alacritty
 #######################
 # <<< <user>@<host>:<directory path> <git branch> >>>
 # $
+#
 # Example:
 # <<< fairy@linuxpc:~/dotfiles * dotfiles >>>
 # $
+#
+# Now simplified:
+# < ~/dotfile * dotfiles >
+# $
 GIT_PS1="\$(git branch 2>/dev/null | grep -e '^\\*' | sed 's/\\* .\\+/\\\\0 /')"
-export PS1="\n\[\e[1;37m\]<<< \[\e[1;34m\]\u\[\e[0;39m\]@\[\e[1;93m\]\h\[\e[0;94m\]:\[\e[1;93m\]\w\[\e[0;39m\]\[\e[1;35m\] $GIT_PS1\[\e[0;39m\]\[\e[1;37m\]>>>\[\e[0;39m\]\n\$ "
+#PS1="\n\[\e[1;37m\]<<< \[\e[1;34m\]\u\[\e[0;39m\]@\[\e[1;93m\]\h\[\e[0;94m\]:\[\e[1;93m\]\w\[\e[0;39m\]\[\e[1;35m\] $GIT_PS1\[\e[0;39m\]\[\e[1;37m\]>>>\[\e[0;39m\]\n\$ "
+PS1="\n\[\e[1m\]"$'\u256d'" \[\e[0;96m\]\w\[\e[35m\] $GIT_PS1\[\e[39m\]\n\[\e[1m\]"$'\u251c'"\[\e[0m\]\$"
 
 #########
 # setup #
 #########
-eval "$(zoxide init bash --cmd cd)"
-
-alias cd..='cd ..'
-
-# hacky workaround to make autocd work correctly
-function __zoxide_z() {
-    if [ $# -eq 2 ] && [ "$1" = "--" ]
-    then
-        shift
-    fi
-    # shellcheck disable=SC2199
-    if [ $# -eq 0 ]
-    then
-        __zoxide_cd ~
-    elif [ $# -eq 1 ] && [ "$1" = "-" ]
-    then
-        __zoxide_cd "${OLDPWD}"
-    elif [ $# -eq 1 ] && [ -d "$1" ]
-    then
-        __zoxide_cd "$1"
-    elif [[ ${@: -1} == "${__zoxide_z_prefix}"?* ]]
-    then
-        # shellcheck disable=SC2124
-        local result="${@: -1}"
-        __zoxide_cd "${result:${#__zoxide_z_prefix}}"
-    else
-        local result
-        # shellcheck disable=SC2312
-        result="$(\command zoxide query --exclude "$(__zoxide_pwd)" -- "$@")" &&
-            __zoxide_cd "${result}"
-    fi
-}
-
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 
@@ -195,10 +161,9 @@ fi
 
 # start tmux/x11 automatically in the first tty
 if [ "$cur" = "/dev/tty1" ] ; then
-    if ! tmux has-session -t 'default' 2>/dev/null
-    then
-        tmux new -s 'default' -d 'neomutt' \; split-window -v 'weechat'
-    fi
+    #if ! tmux has-session -t 'default' 2>/dev/null
+    #then
+    #    tmux new -s 'default' -d 'neomutt' \; split-window -v 'weechat'
+    #fi
     startx
 fi
-

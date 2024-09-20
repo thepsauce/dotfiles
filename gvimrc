@@ -13,6 +13,3 @@ hi Function gui=bold
 hi cMember guifg=#ffb454
 hi Comment gui=italic
 hi Todo gui=bold,italic
-
-set fillchars+=vert:│
-

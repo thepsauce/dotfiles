@@ -1,10 +1,10 @@
 ! General terminal setting (shared between xterm and urxvt)
-*font: xft:Pixy:medium:size=12
+*font: xft:Pixy:medium:size=12,xft:Noto Color Emoji:size=12
 
 *scrollBar: false
 
 ! Colors
-*background: #101421
+*background: #000000
 *foreground: #fffbf6
 
 ! Normal Colors
@@ -33,7 +33,7 @@
 
 URxvt.termName: rxvt-unicode-256color
 
-URxvt.perl-ext-common: selection-to-clipboard,fullscreen,resize-font
+!URxvt.perl-ext-common: selection-to-clipboard,fullscreen,resize-font
 
 URxvt.skipScroll: true
 
@@ -47,7 +47,7 @@ URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 URxvt*depth: 32
-URxvt*background:rgba:1000/1400/2100/ffff
+!URxvt*background:rgba:1000/1400/2100/ffff
 
 ! xterm
 

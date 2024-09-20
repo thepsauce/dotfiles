@@ -8,3 +8,4 @@ xrandr --output $MON2 --off
 xrandr --output $MON1 --auto
 xrandr --output $MON2 --auto
 xrandr --output $MON1 --right-of $MON2
+xrandr --output $MON1 --primary

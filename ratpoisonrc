@@ -23,7 +23,7 @@ set bwcolor black
 escape s-space
 
 # Terminal
-definekey top s-Return exec alacritty
+definekey top s-Return exec st
 
 # Firefox
 bind f exec firefox
@@ -39,7 +39,13 @@ definekey top s-v hsplit
 definekey top s-s vsplit
 
 definekey top s-r remove
-definekey top s-q kill
+definekey top s-q delete
+definekey top S-s-q delete ; remove
+
+definekey top s-p prev
+definekey top s-n next
+
+definekey top s-o other
 
 # Exchange
 bind h exchangeleft
@@ -50,6 +56,7 @@ bind l exchangeright
 # Select
 definekey top s-f fselect
 
+definekey top s-0 select 0
 definekey top s-1 select 1
 definekey top s-2 select 2
 definekey top s-3 select 3
@@ -59,7 +66,6 @@ definekey top s-6 select 6
 definekey top s-7 select 7
 definekey top s-8 select 8
 definekey top s-9 select 9
-definekey top s-0 select 10
 
 # Movement
 definekey top s-h focusleft
@@ -77,6 +83,8 @@ definekey top S-XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -
 definekey top XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle ; exec ratpoison_volume.sh
 definekey top XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle ; exec ratpoison_volume.sh
 
+definekey top s-a exec alacritty -e pulsemixer
+
 # Screenshots
 definekey top F12 exec screencast.sh -a -i -r Screenshots
 definekey top s-F12 exec screencast.sh -i -r Screenshots
@@ -85,3 +93,12 @@ definekey top S-s-F11 exec pkill ffmpeg
 
 # Need this for some video games
 definekey top s-Tab exec ratpoison_switch_layout.sh
+
+# Startup programs
+exec discord
+exec element-desktop
+exec fcitx5
+#exec "$HOME/Coding/window-tracker/build/tracker" --output "$HOME/.tracks"
+exec st -e neomutt
+
+exec ratpoison-sloppymove

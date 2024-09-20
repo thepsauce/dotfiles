@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DISPLAY=:0
+
 # Check if already running
 for pid in $(pidof -x "$(basename "$0")") ; do
     if [ "$pid" != "$$" ] ; then
@@ -21,14 +23,14 @@ start_time="$(date +%s.%N)"
 declare -A titles
 
 # If the script is exited and started again, it keeps multiple files which are differentiated by numbers (_0, _1, _2 etc.)
-file_name="$HOME/.tracks/$(date +%d.%m.%y)"
+file_name="$HOME/.tracks/$(date +%Y-%m-%d)"
 file_counter=0
 while [ -f "${file_name}_$file_counter" ] ; do
     file_counter=$((file_counter+1))
 done
 file_name="${file_name}_$file_counter"
 
-# Main loop with 1second delay
+# Main loop with 1 second delay
 while true ; do
     # This checks if the active window changed by comparing the titles
     new_title="$(xdotool getwindowfocus getwindowname)"

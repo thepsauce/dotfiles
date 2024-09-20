@@ -7,9 +7,9 @@ entries=(
 	"Discord,/usr/bin/discord"
 	"Fontforge,/usr/bin/fontforge"
 	"Internet,/usr/bin/firefox"
-	"Musescore,/usr/bin/mscore"
 	"KICad,/usr/bin/kicad"
 	"Krita,/usr/bin/krita"
+	"Musescore,/usr/bin/mscore"
 	"Periodic table,/usr/bin/kalzium"
 	"Remind,/usr/bin/alacritty --class Alacritty,popup -e vim $HOME/.reminders/appointments.rem"
 	"Steam,/usr/bin/steam -debug_steamapi -console"
@@ -20,8 +20,6 @@ entries=(
 	"Write Stylus,/usr/bin/write_stylus"
 	"Youtube Music,/usr/bin/youtube-music"
 )
-
-IFS=$'\n' sorted=($(sort <<<"${entries[*]}"))
 
 items=
 
@@ -42,8 +40,7 @@ for e in "${entries[@]}"
 do
 	if [ "$result" = "${e%%,*}" ]
 	then
-		eval ${e#*,}
-		break
+		exec ${e#*,}
 	fi
 done
 

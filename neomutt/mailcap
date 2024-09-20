@@ -1,1 +1,2 @@
 text/html; w3m %s; needsterminal; description=HTML Text; nametemplate=%s.html
+application/pdf; w3m %s; needsterminal; description=PDF Application; nametemplate=%s.pdf

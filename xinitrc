@@ -47,10 +47,4 @@ done
 randfix.sh
 xset r rate 200 50
 unclutter -idle 4 -jitter 3 -exclude-root -ignore-scrolling &
-tracker.sh &
-discord &
-element-desktop &
-fcitx5 &
-./"$HOME/Coding/window-tracker/build/tracker" --output "$HOME/.tracks" &
-alacritty -c neomutt &
 exec ratpoison
